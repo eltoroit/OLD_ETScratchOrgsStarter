@@ -51,8 +51,6 @@ The **./.prettierrc** file indicates how the code gets formatted. It specifies t
   <a href="https://www.youtube.com/watch?v=SsoOG6ZeyUI" target="_blank"><img src="https://github.com/eltoroit/ETScratchOrgsStarter/blob/blog/@ELTOROIT/blog/TabsVsSpaces.png?raw=true" alt="Tabs vs. Spaces"></a>
 </div>
 
-[![Tabs vs. Spaces](https://github.com/eltoroit/ETScratchOrgsStarter/blob/blog/@ELTOROIT/blog/TabsVsSpaces.png?raw=true)](https://www.youtube.com/watch?v=SsoOG6ZeyUI "Tabs vs. Spaces")
-
 ## ./config/project-scratch-def.json
 
 This file describes the definition of the scratch org that gets created. There are few things of interest here:
