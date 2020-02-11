@@ -1,0 +1,5 @@
+.sfdx
+.DS_Store
+jsconfig.json
+.vscode/settings.json
+node_modules

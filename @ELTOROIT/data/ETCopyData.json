@@ -1,0 +1,64 @@
+{
+    "now": "2020-02-11T01:05:41.059Z",
+    "orgSource": "dhORG",
+    "orgDestination": "soORG",
+    "sObjectsData": [
+        {
+            "name": "Opportunity",
+            "ignoreFields": "OwnerId",
+            "maxRecords": -1,
+            "orderBy": null,
+            "twoPassReferenceFields": "",
+            "where": null
+        },
+        {
+            "name": "Case",
+            "ignoreFields": "OwnerId",
+            "maxRecords": -1,
+            "orderBy": null,
+            "twoPassReferenceFields": "",
+            "where": null
+        },
+        {
+            "name": "Lead",
+            "ignoreFields": "OwnerId",
+            "maxRecords": -1,
+            "orderBy": null,
+            "twoPassReferenceFields": "",
+            "where": null
+        },
+        {
+            "name": "Contact",
+            "ignoreFields": "OwnerId",
+            "maxRecords": -1,
+            "orderBy": null,
+            "twoPassReferenceFields": "",
+            "where": null
+        },
+        {
+            "name": "Campaign",
+            "ignoreFields": "OwnerId",
+            "maxRecords": -1,
+            "orderBy": null,
+            "twoPassReferenceFields": "",
+            "where": null
+        },
+        {
+            "name": "Account",
+            "ignoreFields": "OwnerId",
+            "maxRecords": -1,
+            "orderBy": null,
+            "twoPassReferenceFields": "",
+            "where": null
+        }
+    ],
+    "sObjectsMetadata": [],
+    "rootFolder": "ETCopyData",
+    "includeAllCustom": false,
+    "stopOnErrors": true,
+    "ignoreFields": null,
+    "twoPassReferenceFields": null,
+    "maxRecordsEach": -1,
+    "deleteDestination": false,
+    "pollingTimeout": 100000
+}

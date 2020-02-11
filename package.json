@@ -1,0 +1,25 @@
+{
+	"name": "basicproject",
+	"version": "1.0.0",
+	"description": "Sample SFDX ",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eltoroit/ETScratchOrgsStarter.git"
+	},
+	"keywords": [
+		"SFDX",
+		"Scratch",
+		"Starter"
+	],
+	"author": "Andres Perez",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/eltoroit/ETScratchOrgsStarter/issues"
+	},
+	"homepage": "https://github.com/eltoroit/ETScratchOrgsStarter#readme",
+	"devDependencies": {
+		"prettier": "1.19.1",
+		"prettier-plugin-apex": "1.2.0"
+	}
+}
