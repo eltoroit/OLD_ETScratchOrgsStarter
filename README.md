@@ -111,7 +111,7 @@ As seen above, one of the last steps executed when creating a scratch org is to 
 
 # Bonus content
 
-## ./@ELTOROIT/scripts/CleanOrgs.sh
+## ./@ELTOROIT/scripts/DeleteOrgs.sh
 
 One of the things I like to do with scratch Orgs is to create more scratch orgs than needed. This process helps me know the metadata I have in the repo is complete, and that I will be able to create a scratch org at any time. It also helps me prove the demos I am sharing with the world can work. This creates a ton of scratch Orgs, that need to be cleaned!
 
