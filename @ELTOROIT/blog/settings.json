@@ -1,0 +1,36 @@
+{
+	// My own
+	"salesforcedx-vscode-apex.java.home": "/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home",
+	"workbench.colorTheme": "Default Light+",
+	"workbench.quickOpen.closeOnFocusLost": false,
+	"editor.renderWhitespace": "selection",
+	"editor.renderControlCharacters": true,
+	"terminal.integrated.shell.osx": "/bin/zsh",
+	"javascript.format.enable": false,
+	"typescript.format.enable": false,
+	"markdown.extension.tableFormatter.normalizeIndentation": true,
+	"git.untrackedChanges": "separate",
+	"git.smartCommitChanges": "tracked",
+	"emmet.triggerExpansionOnTab": true,
+	"emmet.showSuggestionsAsSnippets": true,
+	"window.zoomLevel": 1,
+
+	// Recommended for students
+	"breadcrumbs.enabled": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnType": false,
+	"editor.insertSpaces": false,
+	"editor.formatOnSaveTimeout": 5000,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"terminal.integrated.rendererType": "dom",
+	"search.exclude": {
+		"**/bower_components": false,
+		"**/node_modules": false,
+		"**/node_modules111a": false
+	},
+	"workbench.activityBar.visible": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"editor.minimap.enabled": false
+}
