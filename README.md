@@ -43,7 +43,9 @@ Both folders get processed when pushing metadata to a scratch org. When doing a 
 
 The **./.prettierrc** file indicates how the code gets formatted. It specifies the maximum with for the code, and that we will be using tabs vs. spaces. I prefer tabs over spaces, but let's not pick up a fight over that!
 
-<p align="center"><iframe src="https://www.youtube.com/embed/SsoOG6ZeyUI?wmode=transparent&amp;showinfo=0" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=SsoOG6ZeyUI"><img src="https://github.com/eltoroit/ETScratchOrgsStarter/blob/blog/@ELTOROIT/blog/TabsVsSpaces.png?raw=true" alt="Tabs vs. Spaces"></a>
+</div>
 
 ## ./config/project-scratch-def.json
 
