@@ -11,7 +11,7 @@ By the way, I also use this scratch org template when working on some projects f
 I am sharing with you the [repo](https://github.com/eltoroit/ETScratchOrgsStarter) for this base scratch org, but I want to explain some things that you will find useful.
 
 <p align="center">
-<a href="https://github.com/eltoroit/ETScratchOrgsStarter"><img src="https://github.com/eltoroit/ETScratchOrgsStarter/blob/blog/@ELTOROIT/blog/RepoLink.png?raw=true" alt="The Perfect SFDX Starter Project For Any Scratch Orgs Development" /></a>
+<a href="https://github.com/eltoroit/ETScratchOrgsStarter" target="_blank"><img src="https://github.com/eltoroit/ETScratchOrgsStarter/blob/blog/@ELTOROIT/blog/RepoLink.png?raw=true" alt="The Perfect SFDX Starter Project For Any Scratch Orgs Development" /></a>
 </p>
 
 # Folders & Files
@@ -44,7 +44,7 @@ Both folders get processed when pushing metadata to a scratch org. When doing a 
 The **./.prettierrc** file indicates how the code gets formatted. It specifies the maximum with for the code, and that we will be using tabs vs. spaces. I prefer tabs over spaces, but let's not pick up a fight over that!
 
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=SsoOG6ZeyUI"><img src="https://github.com/eltoroit/ETScratchOrgsStarter/blob/blog/@ELTOROIT/blog/TabsVsSpaces.png?raw=true" alt="Tabs vs. Spaces"></a>
+  <a href="https://www.youtube.com/watch?v=SsoOG6ZeyUI" target="_blank"><img src="https://github.com/eltoroit/ETScratchOrgsStarter/blob/blog/@ELTOROIT/blog/TabsVsSpaces.png?raw=true" alt="Tabs vs. Spaces"></a>
 </div>
 
 ## ./config/project-scratch-def.json
