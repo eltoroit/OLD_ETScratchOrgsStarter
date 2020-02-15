@@ -20,11 +20,11 @@ function showPause(){
 
 function et_sfdx(){
 	echo "\033[2;30msfdx $*\033[0m"
-	sfdx $*
+	sfdx $* || exit -1
 }
 
 function jq_sfdx(){
 	echo "\033[2;30msfdx $*\033[0m"
-	local sfdxResult=`sfdx $*`
+	local sfdxResult=`sfdx $* || exit -1`
 	echo $sfdxResult | jq "del(.result.tests, .result.coverage)"
 }
