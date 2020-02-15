@@ -18,13 +18,32 @@ function showPause(){
 	echo "\033[0m"
 }
 
+function QuitError() {
+	echo "\033[0;31m"
+	echo "Org could not be created!"
+	read -p "Press [Enter] key to continue...  "
+	echo "\033[0m"
+	exit 1
+}
+
+function QuitSuccess() {
+	# Green
+	echo "\033[0;32m";
+	echo "*** *** *** *** *** *** *** *** *** ***"
+	echo "*** *** Org created succesfully *** ***"
+	echo "*** *** *** *** *** *** *** *** *** ***"
+	echo "\033[0m"
+	exit 0
+}
+
 function et_sfdx(){
 	echo "\033[2;30msfdx $*\033[0m"
-	sfdx $* || exit -1
+	sfdx $* || QuitError
 }
 
 function jq_sfdx(){
 	echo "\033[2;30msfdx $*\033[0m"
-	local sfdxResult=`sfdx $* || exit -1`
+	local sfdxResult=`sfdx $* || QuitError`
 	echo $sfdxResult | jq "del(.result.tests, .result.coverage)"
 }
+

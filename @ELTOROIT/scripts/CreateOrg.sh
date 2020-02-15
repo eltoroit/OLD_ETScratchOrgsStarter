@@ -105,3 +105,5 @@ if [[ "$GENERATE_PASSWORD" = true ]]; then
 	et_sfdx force:user:display
 	showComplete
 fi
+
+QuitSuccess
