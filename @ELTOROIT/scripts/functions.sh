@@ -8,7 +8,7 @@ function showStatus() {
 }
 function showComplete() {
 	# Green
-	echo "\033[0;32mOperation Completed\033[0m"
+	echo "\033[0;32mTask Completed\033[0m"
 }
 function showPause(){
 	# Red
@@ -41,7 +41,19 @@ function et_sfdx(){
 	sfdx $* || QuitError
 }
 
-function jq_sfdx(){
+function jq_sfdxGeneratePassword() {
+	# Display has a bug where the password is encripted on display and can't be shown. 
+	# et_sfdx force:user:password:generate --json
+
+	sfdx force:user:password:generate --json > tempPW.json
+	sfdx force:user:display --json > userInfo.json
+	pwd=$(jq -r '.result.password' tempPW.json)
+	jq --arg pwd "$pwd" '.result.password = $pwd' userInfo.json > user.tmp && mv user.tmp userInfo.json
+	rm tempPW.json
+	cat userInfo.json | jq
+}
+
+function jq_sfdxRunApexTests(){
 	echo "\033[2;30msfdx $*\033[0m"
 	sfdx $* > apexTests.json
 	local resultcode=$?
@@ -138,15 +150,14 @@ function everything() {
 # --- Generate Password
 	if [[ "$GENERATE_PASSWORD" = true ]]; then
 		showStatus "*** Generate Password..."
-		et_sfdx force:user:password:generate --json
-		et_sfdx force:user:display
+		jq_sfdxGeneratePassword
 		showComplete
 	fi
 
 # --- Runing Apex tests
 	if [[ "$RUN_APEX_TESTS" = true ]]; then
 		showStatus "Runing Apex tests"
-		jq_sfdx force:apex:test:run --codecoverage --synchronous --verbose --json --resultformat json
+		jq_sfdxRunApexTests force:apex:test:run --codecoverage --synchronous --verbose --json --resultformat json
 		showComplete
 	fi
 
