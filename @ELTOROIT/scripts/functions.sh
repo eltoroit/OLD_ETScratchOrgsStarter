@@ -12,7 +12,7 @@ function showComplete() {
 }
 function showPause(){
 	# Red
-	echo "\033[0;31m"
+	echo "\033[0;35m"
 	echo $1
 	read -p "Press [Enter] key to continue...  "
 	echo "\033[0m"
@@ -120,15 +120,15 @@ function everything() {
 	fi
 
 # --- Deploy profile (Maybe .forceignore prevents them from push/pull)
-	ADMIN_PROFILE=./deploy/main/default/profiles/Admin.profile-meta.xml
+	ADMIN_PROFILE=./doNotDeploy/main/default/profiles/Admin.profile-meta.xml
 	if [ ! -z "$ADMIN_PROFILE" ]; then
 		if [[ "$DEPLOY_ADMIN" = true ]]; then
 			code .forceIgnore
-			showPause "Ensure .forceIgnore DEPLOYS profiles"
+			showPause "Ensure .forceIgnore DEPLOYS profiles (Comment out [Hidden])"
 			showStatus "*** Deploying 'Admin' standard profile..."
 			et_sfdx force:source:deploy -p "$ADMIN_PROFILE"
 			showComplete
-			showPause "Ensure .forceIgnore EXCLUDES profiles"
+			showPause "Ensure .forceIgnore EXCLUDES profiles (Uncomment out [Visible])"
 		fi
 	fi
 

@@ -17,7 +17,7 @@
 
 	# Deploy Admin standard profile
 	# Helps set the page layouts, for example
-	DEPLOY_ADMIN=false
+	DEPLOY_ADMIN=true
 	
 	# Path to Apex code to execute anonymously
 	# Sample: $DIR/AnonymousApex.txt
@@ -38,13 +38,13 @@
 	PAUSE2CHECK_ORG=true
 
 	# Do you want to use ETCopyData to import data?
-	IMPORT_DATA=true
+	IMPORT_DATA=false
 
 	# Do you want to run Apex tests in this new org before starting?
 	RUN_APEX_TESTS=true
 
 	# Do you need a password for the user name? You may need this depening on the use of the new scratch org
-	GENERATE_PASSWORD=true
+	GENERATE_PASSWORD=false
 
 # --- Ready, set, go!
 	everything
