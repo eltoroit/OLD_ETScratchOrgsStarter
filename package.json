@@ -1,8 +1,8 @@
 {
 	"name": "basicproject",
+	"private": true,
 	"version": "1.0.0",
-	"description": "Sample SFDX ",
-	"main": "index.js",
+	"description": "Sample SFDX Scratch Project",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/eltoroit/ETScratchOrgsStarter.git"
@@ -19,7 +19,27 @@
 	},
 	"homepage": "https://github.com/eltoroit/ETScratchOrgsStarter#readme",
 	"devDependencies": {
-		"prettier": "1.19.1",
-		"prettier-plugin-apex": "1.2.0"
+		"@prettier/plugin-xml": "^0.8.0",
+		"@salesforce/eslint-config-lwc": "^0.7.0",
+		"@salesforce/sfdx-lwc-jest": "^0.7.1",
+		"eslint": "^7.4.0",
+		"prettier": "^2.0.5",
+		"prettier-plugin-apex": "^1.6.0"
+	},
+	"jest": {
+		"testPathIgnorePatterns": [
+			"<rootDir>/node_modules/"
+		]
+	},
+	"scripts": {
+		"lint": "npm run lint:lwc",
+		"lint:lwc": "eslint force-app/main/default/lwc",
+		"test": "npm run test:unit",
+		"test:unit": "sfdx-lwc-jest",
+		"test:unit:watch": "sfdx-lwc-jest --watch",
+		"test:unit:debug": "sfdx-lwc-jest --debug",
+		"test:unit:coverage": "sfdx-lwc-jest --coverage",
+		"prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
+		"prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\""
 	}
 }

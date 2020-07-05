@@ -4,12 +4,19 @@
 
 package.xml
 
-# LWC configuration files
+### LWC configuration files
 **/jsconfig.json
 **/.eslintrc.json
 
-# LWC Jest
+### LWC Jest
 **/__tests__/**
 
-# Ignore this... You should be working with Permission Sets
-**/profiles/**
+### Ignore Profiles... You should be working with Permission Sets
+# Do not use custom profiles that come with the scratch orgs
+**/profiles/Custom*Profile.profile-meta.xml
+
+# Do not accept changes to the Admin profile when pulling. Reminds you of adding things to the permission sets
+Admin.profile
+
+# Ignore any profile... Comment this line if you do need to work with your own profiles
+**/profiles/** 

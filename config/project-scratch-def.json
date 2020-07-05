@@ -2,9 +2,18 @@
 	"orgName": "ELTOROIT Demos Computing",
 	"edition": "Developer",
 	"hasSampleData": false,
+	"features": [],
 	"settings": {
 		"mobileSettings": {
 			"enableS1EncryptedStoragePref2": false
+		},
+		"lightningExperienceSettings": {
+			"enableS1DesktopEnabled": true
+		},
+		"securitySettings": {
+			"passwordPolicies": {
+				"enableSetPasswordInApi": true
+			}
 		}
 	}
 }

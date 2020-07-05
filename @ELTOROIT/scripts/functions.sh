@@ -4,70 +4,140 @@
 
 function showStatus() {
 	# Magenta
-	echo "\033[0;35m$1\033[0m"
-}
-function showComplete() {
-	# Green
-	echo "\033[0;32mTask Completed\033[0m"
-}
-function showPause(){
-	# Red
-	echo "\033[0;35m"
-	echo $1
-	read -p "Press [Enter] key to continue...  "
-	echo "\033[0m"
+	printf "\033[0;35m$1\033[0m\n"
 }
 
-function QuitError() {
-	echo "\033[0;31m"
-	echo "Org could not be created!"
-	read -p "Press [Enter] key to continue...  "
-	echo "\033[0m"
-	exit 1
+function showComplete() {
+	# Green
+	printf "\033[0;32mTask Completed\033[0m\n"
+}
+
+function ReportError() {
+	printf "\033[0;31m\n"
+	printf "Org could not be created!\n"
+	if [[ "$QUIT_ON_ERRORS" = true ]]; then
+		if [[ "$USER_ON_SCREEN" = true ]]; then 
+			printf "Press [Enter] key to exit process..."
+			printf "\033[0m"	
+			read -p " "
+			exit 1
+		else
+			printf "\033[0m\n"	
+			exit 1
+		fi
+	else
+		printf "Press [Enter] key to continue..."
+		printf "\033[0m"	
+		read -p " "
+	fi
+}
+
+function showPause(){
+	# This will fail on an automated process, but not sure how to fix it.
+	# Should I ask? Should I skip? Should I error?
+	if [[ "$USER_ON_SCREEN" = true ]]; then 
+		printf "\033[0;35m\n"
+		printf "%s " $*
+		printf "\n"
+		printf "Press [Enter] key to continue...  "
+		printf "\033[0m"
+		read -p " "
+	else
+		printf "\033[0;31m"
+		printf "Automated tests! Should not be prompting for this"
+		printf "\033[0m\n"
+		ReportError
+	fi
 }
 
 function QuitSuccess() {
 	# Green
-	echo "\033[0;32m";
-	echo "*** *** *** *** *** *** *** *** *** ***"
-	echo "*** *** Org created succesfully *** ***"
-	echo "*** *** *** *** *** *** *** *** *** ***"
-	echo "\033[0m"
+	printf "\033[0;32m\n"
+	printf "*** *** *** *** *** *** ***\n"
+	printf "*** *** Org created *** ***\n"
+	printf "*** *** *** *** *** *** ***\n"
+	printf "\033[0m\n"
 	exit 0
 }
 
 function et_sfdx(){
-	echo "\033[2;30msfdx $*\033[0m"
-	sfdx $* || QuitError
+	printf "\033[2;30msfdx $*\033[0m\n"
+	sfdx $* || ReportError
+}
+
+function et_sfdxPush(){
+	printf "\033[2;30msfdx $*\033[0m\n"
+	sfdx $* > etLogs/push.json || ReportError
 }
 
 function jq_sfdxGeneratePassword() {
 	# Display has a bug where the password is encripted on display and can't be shown. 
 	# et_sfdx force:user:password:generate --json
 
-	sfdx force:user:password:generate --json > tempPW.json
-	sfdx force:user:display --json > userInfo.json
-	pwd=$(jq -r '.result.password' tempPW.json)
-	jq --arg pwd "$pwd" '.result.password = $pwd' userInfo.json > user.tmp && mv user.tmp userInfo.json
-	rm tempPW.json
-	cat userInfo.json | jq
+	sfdx force:user:password:generate --json > etLogs/tempPW.json
+	sfdx force:user:display --json > etLogs/userInfo.json
+	pwd=$(jq -r '.result.password' etLogs/tempPW.json)
+	jq --arg pwd "$pwd" '.result.password = $pwd' etLogs/userInfo.json > etLogs/user.tmp && mv etLogs/user.tmp etLogs/userInfo.json
+	rm etLogs/tempPW.json
+	cat etLogs/userInfo.json | jq
 }
 
 function jq_sfdxRunApexTests(){
-	echo "\033[2;30msfdx $*\033[0m"
-	sfdx $* > apexTests.json
+	printf "\033[2;30msfdx $*\033[0m\n"
+	sfdx $* > etLogs/apexTests.json
 	local resultcode=$?
-	cat apexTests.json | jq "del(.result.tests, .result.coverage)"
+	cat etLogs/apexTests.json | jq "del(.result.tests, .result.coverage)"
 	if [[ $resultcode -ne 0 ]]; then
-		echo "\033[0;31m"
-		echo "Tests run, but they failed!"
-		read -p "Press [Enter] key to continue...  "
-		echo "\033[0m"
-		exit 1
+		printf "\033[0;31m\n"
+		printf "Tests run, but they failed!\n"
+		if [[ "$QUIT_ON_ERRORS" = true ]]; then
+			if [[ "$USER_ON_SCREEN" = true ]]; then 
+				printf "Press [Enter] key to exit process...  "
+				printf "\033[0m"
+				read -p " "
+			fi
+			exit 1
+		fi
+		if [[ "$USER_ON_SCREEN" = true ]]; then 
+			printf "Press [Enter] key to continue...  "	
+			printf "\033[0m"
+			read -p " "
+		fi
 	fi
 }
 
+function backupAlias() {
+	printf "\033[2;30msfdx force:alias:list --json\033[0m\n"
+	sfdx force:alias:list --json > etLogs/aliasList.json
+
+	printf "\033[2;30mFinding Username for $ALIAS\033[0m\n"
+	cat etLogs/aliasList.json | jq --arg JQALIAS "$ALIAS" '.result[] | select(.alias==$JQALIAS) | .value' | while read -r UN; do
+		local TEMP="${UN%\"}"
+		UN="${TEMP#\"}"
+		# printf "\033[2;30m[$ALIAS.bak] <= [$UN]\033[0m\n"
+		et_sfdx force:alias:set $ALIAS.bak=$UN
+	done
+}
+
 function everything() {
+	DEPLOY_PAGE="/lightning/setup/DeployStatus/home"
+
+# --- Run JEST tests before anything else!
+	if [[ "$RUN_JEST_TESTS" = true ]]; then
+		showStatus "*** Running JEST tests..."
+		JEST_LOG=etLogs/jestTest.json
+		printf "\033[2;30mJEST logs are here: $JEST_LOG\033[0m\n"
+		npm run test:unit:coverage &> $JEST_LOG || ReportError
+		showComplete
+	fi
+
+# --- Backup this org alias
+	if [[ "$BACKUP_ALIAS" = true ]]; then
+		showStatus "*** Backup this org alias..."
+		backupAlias
+		showComplete
+	fi
+
 # --- Create scratch org
 	showStatus "*** Creating scratch Org..."
 	et_sfdx force:org:create -f config/project-scratch-def.json --setdefaultusername --setalias "$ALIAS" -d "$DAYS"
@@ -80,10 +150,17 @@ function everything() {
 		showPause "Stop to validate the ORG was created succesfully."
 	fi
 
+# --- Open deploy page to watch deployments
+	if [[ "$SHOW_DEPLOY_PAGE" = true ]]; then
+		showStatus "*** Open page to monitor deployment..."
+		et_sfdx force:org:open --path=$DEPLOY_PAGE
+	fi
+
 # --- Manual metadata (before deployment)
 	if [[ ! -z "$PATH2SETUP_METADATA_BEFORE" ]]; then
+		showStatus "*** Open page to configure org (BEFORE pushing)..."
 		et_sfdx force:org:open --path "$PATH2SETUP_METADATA_BEFORE"
-		showPause "Configure additonal metadata BEFORE pushing"
+		showPause "Configure additonal metadata BEFORE pushing..."
 	fi
 
 # --- Execute Apex Anonymous code (Before Push)
@@ -93,9 +170,24 @@ function everything() {
 		showComplete
 	fi
 
+# --- Install Packages (Before Push)
+	if [ ! -z "$PACKAGES" ]; then
+		showStatus "*** Installing Packages (before push)..."
+		for PACKAGE in ${PACKAGES[@]}; do
+			# if [[ "$SHOW_DEPLOY_PAGE" = true ]]; then
+			# 	et_sfdx force:org:open --path=$DEPLOY_PAGE
+			# fi
+			et_sfdx force:package:install --apexcompile=all --package "$PACKAGE" --wait=30
+		done
+		showComplete
+	fi
+
 # --- Push metadata
 	showStatus "*** Pushing metadata to scratch Org..."
-	et_sfdx force:source:push --json
+	# if [[ "$SHOW_DEPLOY_PAGE" = true ]]; then
+	# 	et_sfdx force:org:open --path=$DEPLOY_PAGE
+	# fi
+	et_sfdxPush force:source:push
 	showComplete
 
 # --- Execute Apex Anonymous code (After Push)
@@ -107,8 +199,9 @@ function everything() {
 
 # --- Manual metadata (after deployment)
 	if [[ ! -z "$PATH2SETUP_METADATA_AFTER" ]]; then
+		showStatus "*** Open page to configure org (AFTER pushing)..."
 		et_sfdx force:org:open --path "$PATH2SETUP_METADATA_AFTER"
-		showPause "Configure additonal metadata AFTER pushing"
+		showPause "Configure additonal metadata AFTER pushing..."
 	fi
 
 # --- Assign permission set
@@ -123,18 +216,16 @@ function everything() {
 	ADMIN_PROFILE=./doNotDeploy/main/default/profiles/Admin.profile-meta.xml
 	if [ ! -z "$ADMIN_PROFILE" ]; then
 		if [[ "$DEPLOY_ADMIN" = true ]]; then
-			code .forceIgnore
-			showPause "Ensure .forceIgnore DEPLOYS profiles (Comment out [Hidden])"
 			showStatus "*** Deploying 'Admin' standard profile..."
+			mv .forceignore .forceignore.old
 			et_sfdx force:source:deploy -p "$ADMIN_PROFILE"
-			showComplete
-			showPause "Ensure .forceIgnore EXCLUDES profiles (Uncomment out [Visible])"
+			mv .forceignore.old .forceignore
 		fi
 	fi
 
 # --- Load data using ETCopyData plugin
 	if [[ "$IMPORT_DATA" = true ]]; then
-		showStatus "*** Creating data using ETCopyData plugin"
+		showStatus "*** Creating data using ETCopyData plugin..."
 		# et_sfdx ETCopyData:export -c "./@ELTOROIT/data" --loglevel warn --json
 		et_sfdx ETCopyData:import -c "./@ELTOROIT/data" --loglevel warn --json
 		showComplete
@@ -156,7 +247,7 @@ function everything() {
 
 # --- Runing Apex tests
 	if [[ "$RUN_APEX_TESTS" = true ]]; then
-		showStatus "Runing Apex tests"
+		showStatus "Runing Apex tests..."
 		jq_sfdxRunApexTests force:apex:test:run --codecoverage --synchronous --verbose --json --resultformat json
 		showComplete
 	fi

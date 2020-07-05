@@ -1,0 +1,27 @@
+name: "ELTOROIT Test Scratch Org"
+on: [push]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Create etLogs folder
+              run: mkdir etLogs
+            - name: Install tools
+              run: |
+                  wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+                  mkdir sfdx-cli
+                  tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+                  ./sfdx-cli/install
+                  sfdx force:lightning:lwc:test:setup
+                  echo 'y' | sfdx plugins:install etcopydata
+            - name: Register DevHub
+              run: |
+                  echo ${{ secrets.DEVHUB_TOKEN}} > etLogs/token.txt
+                  sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
+            - name: Create scratch org
+              run: ./@ELTOROIT/scripts/CreateOrg.sh
+            - name: Display etLogs
+              run: |
+                  ls -l etLogs
+                  for filename in etLogs/*.json; do printf "\n\n\033[0;32mFile: %s \033[0m\n\n\n" $filename; cat $filename; done

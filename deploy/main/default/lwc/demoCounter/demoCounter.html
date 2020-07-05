@@ -1,0 +1,16 @@
+<template>
+	<lightning-card>
+		<lightning-button slot="actions" variant="brand" label="Plus 1" onclick={plus1}></lightning-button>
+		<lightning-layout multiple-rows="true">
+			<lightning-layout-item size="12" class="slds-align_absolute-center slds-text-heading_large">
+				<lightning-input label="Counter" value={counter} onchange={updateCounter}></lightning-input>
+			</lightning-layout-item>
+			<lightning-layout-item size="12" data-id="errorMsg" class="slds-align_absolute-center">
+				<div if:true={errorCount} style="color: red;">
+					Found <span data-id="errorCount">{errorCount}</span> errors.<br />
+					Resetting counter to zero!
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+	</lightning-card>
+</template>
