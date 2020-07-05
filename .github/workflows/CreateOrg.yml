@@ -7,6 +7,8 @@ jobs:
             - uses: actions/checkout@v2
             - name: Create etLogs folder
               run: mkdir -p etLogs
+            - name: Export token
+              run: echo ${{ secrets.DEVHUB_TOKEN}} > etLogs/token.txt
             - name: Install tools
               run: |
                   wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
@@ -16,9 +18,7 @@ jobs:
                   sfdx force:lightning:lwc:test:setup
                   echo 'y' | sfdx plugins:install etcopydata
             - name: Register DevHub
-              run: |
-                  echo ${{ secrets.DEVHUB_TOKEN}} > etLogs/token.txt
-                  sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
+              run: sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
             - name: Create scratch org
               run: ./@ELTOROIT/scripts/CreateOrg.sh
             - name: Display etLogs
