@@ -1,4 +1,4 @@
-![ELTOROIT Test Scratch Org](https://github.com/eltoroit/T1/workflows/ELTOROIT%20Test%20Scratch%20Org/badge.svg)
+![ELTOROIT Test Scratch Org](https://github.com/eltoroit/ETScratchOrgsStarter/workflows/ELTOROIT%20Test%20Scratch%20Org/badge.svg)
 
 # The Perfect SFDX Starter Project For Any Scratch Orgs Development
 
