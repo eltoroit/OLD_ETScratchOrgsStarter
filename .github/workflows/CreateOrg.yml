@@ -6,7 +6,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Create etLogs folder
-              run: mkdir etLogs
+              run: mkdir -p etLogs
             - name: Install tools
               run: |
                   wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
