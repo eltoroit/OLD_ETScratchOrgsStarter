@@ -1,5 +1,5 @@
 {
-	"name": "basicproject",
+	"name": "et-basic-project",
 	"private": true,
 	"version": "1.0.0",
 	"description": "Sample SFDX Scratch Project",
@@ -12,19 +12,19 @@
 		"Scratch",
 		"Starter"
 	],
-	"author": "Andres Perez",
+	"author": "Andres Perez (@ELTOROIT)",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/eltoroit/ETScratchOrgsStarter/issues"
 	},
 	"homepage": "https://github.com/eltoroit/ETScratchOrgsStarter#readme",
 	"devDependencies": {
-		"@prettier/plugin-xml": "^0.8.0",
-		"@salesforce/eslint-config-lwc": "^0.7.0",
-		"@salesforce/sfdx-lwc-jest": "^0.7.1",
-		"eslint": "^7.4.0",
+		"eslint": "^7.6.0",
 		"prettier": "^2.0.5",
-		"prettier-plugin-apex": "^1.6.0"
+		"prettier-plugin-apex": "^1.6.0",
+		"@prettier/plugin-xml": "^0.10.0",
+		"@salesforce/sfdx-lwc-jest": "^0.9.2",
+		"@salesforce/eslint-config-lwc": "^0.7.0"
 	},
 	"jest": {
 		"testPathIgnorePatterns": [
