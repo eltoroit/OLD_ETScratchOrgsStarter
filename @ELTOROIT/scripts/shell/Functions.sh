@@ -1,7 +1,6 @@
 # Colors:
 # 	https://www.shellhacks.com/bash-colors/
 # 	https://misc.flogisoft.com/bash/tip_colors_and_formatting
-
 function promptUser() {
 	printf "\033[0m"
 	read -e answer
@@ -51,22 +50,17 @@ function showPause(){
 		ReportError
 	fi
 }
-function QuitSuccess() {
-	# Green
-	printf "\033[0;32m\n"
-	printf "*** *** *** *** *** *** ***\n"
-	printf "*** *** Org created *** ***\n"
-	printf "*** *** *** *** *** *** ***\n"
-	printf "\033[0m\n"
-	exit 0
-}
+
+# SFDX Core functions 
 function et_sfdx(){
 	showCommand "sfdx $*"
 	sfdx $* || ReportError
 }
 function et_sfdxPush(){
+	showStatus "*** Pushing metadata to scratch Org..."
 	showCommand "sfdx $*"
 	etFile=etLogs/push.json
+	showCommand "Push logs are here: $etFile"
 	sfdx $* >> $etFile
 	local resultcode=$?
 	if [[ "$AUTOMATED_PROCESS" = true ]]; then 
@@ -74,12 +68,15 @@ function et_sfdxPush(){
 	fi
 	if [[ $resultcode -ne 0 ]]; then
 		ReportError
+	else
+		showComplete
 	fi
 }
 function et_sfdxDeploy(){
 	showStatus "*** Deploying metadata to scratch Org..."
 	showCommand "sfdx $*"
 	etFile=etLogs/deploy.json
+	showCommand "Deploy logs are here: $etFile"
 	sfdx $* >> $etFile
 	local resultcode=$?
 	if [[ "$AUTOMATED_PROCESS" = true ]]; then 
@@ -87,6 +84,8 @@ function et_sfdxDeploy(){
 	fi
 	if [[ $resultcode -ne 0 ]]; then
 		ReportError
+	else
+		showComplete
 	fi
 }
 function jq_sfdxGeneratePassword() {
@@ -138,7 +137,7 @@ function backupAlias() {
 		cat $etFile
 	fi
 
-	showCommand "Finding Username for $ALIAS"
+	showCommand "Finding org for $ALIAS"
 	cat $etFile | jq --arg JQALIAS "$ALIAS" '.result[] | select(.alias==$JQALIAS) | .value' | while read -r UN; do
 		local TEMP="${UN%\"}"
 		UN="${TEMP#\"}"
@@ -147,8 +146,7 @@ function backupAlias() {
 	done
 }
 
-
-
+# Script pieces
 function mainRunJest() {
 	# --- Run JEST tests before anything else!
 	if [[ "$RUN_JEST_TESTS" = true ]]; then
@@ -165,6 +163,8 @@ function mainRunJest() {
 		else
 			showComplete
 		fi
+	else
+		showStatus "*** JEST tests are being skipped! ***"
 	fi	
 }
 function mainBackupAlias() {
@@ -236,13 +236,7 @@ function mainDeploy() {
 	fi
 }
 function mainPushMetadata() {
-	# --- Push metadata
-	showStatus "*** Pushing metadata to scratch Org..."
-	# if [[ "$SHOW_DEPLOY_PAGE" = true ]]; then
-	# 	et_sfdx force:org:open --path=$DEPLOY_PAGE
-	# fi
 	et_sfdxPush force:source:push --forceoverwrite --json
-	showComplete
 }
 function mainExecuteApexAfterPush() {
 	# --- Execute Apex Anonymous code (After Push)
@@ -269,7 +263,7 @@ function mainAssignPermissionSet() {
 		showComplete
 	fi
 }
-function mainDeplyAdminProfile() {
+function mainDeployAdminProfile() {
 	# --- Deploy profile
 	ADMIN_PROFILE=./doNotDeploy/main/default/profiles/Admin.profile-meta.xml
 	if [ ! -z "$ADMIN_PROFILE" ]; then
@@ -300,14 +294,6 @@ function mainExecuteApexAfterData() {
 		showComplete
 	fi
 }
-function mainGeneratePassword() {
-	# --- Generate Password
-	if [[ "$GENERATE_PASSWORD" = true ]]; then
-		showStatus "*** Generate Password..."
-		jq_sfdxGeneratePassword
-		showComplete
-	fi
-}
 function mainRunApexTests() {
 	# --- Runing Apex tests
 	if [[ "$RUN_APEX_TESTS" = true ]]; then
@@ -315,10 +301,6 @@ function mainRunApexTests() {
 		jq_sfdxRunApexTests force:apex:test:run --codecoverage --synchronous --verbose --json --resultformat json
 		showComplete
 	fi
-}
-function mainDisplayAlias() {
-	# Used for testing the script is called in GitHub Actions
-	echo "ALIAS: $ALIAS"
 }
 function mainPushAgain() {
 	# --- Push metadata
@@ -329,23 +311,41 @@ function mainPushAgain() {
 	et_sfdxPush force:source:push -u "$ALIAS" -f
 	showComplete
 }
-function mainFinalSetup() {
+function mainReassignAlias() {
 	# --- Push metadata
 	showStatus "*** Final touches..."
 	et_sfdx force:config:set defaultusername=$ALIAS
 	showComplete
 }
+function mainGeneratePassword() {
+	# --- Generate Password
+	if [[ "$GENERATE_PASSWORD" = true ]]; then
+		showStatus "*** Generate Password..."
+		jq_sfdxGeneratePassword
+		showComplete
+	fi
+}
+function QuitSuccess() {
+	# Green
+	printf "\033[0;32m\n"
+	printf "*** *** *** *** *** *** ***\n"
+	printf "*** *** Org created *** ***\n"
+	printf "*** *** *** *** *** *** ***\n"
+	printf "\033[0m\n"
+	exit 0
+}
 
+
+# Global variables
 DEPLOY_PAGE="/lightning/setup/DeployStatus/home"
-rm -rf ./etLogs
-mkdir -p etLogs
 AUTOMATED_PROCESS=false
 if [[ "$ET_CICD" = true ]]; then
 	AUTOMATED_PROCESS=true
 fi
-echo "ET_CICD: $ET_CICD"
-echo "AUTOMATED_PROCESS: $AUTOMATED_PROCESS"
 
+# Start Process
+rm -rf ./etLogs
+mkdir -p etLogs
 if [[ ! -z "$*" ]]; then
 	$*
 else
@@ -358,21 +358,29 @@ else
 	mainManualMetadataBefore
 	mainExecuteApexBeforePush
 	mainInstallPackages
-	mainDeploy
+	# mainDeploy (Do not do a deploy, rather do a push)
 	mainPushMetadata
-	mainExecuteApexAfterPush
 	mainManualMetadataAfter
+	mainExecuteApexAfterPush
 	mainAssignPermissionSet
-	mainDeplyAdminProfile
+	mainDeployAdminProfile
 	mainLoadData
 	mainExecuteApexAfterData
 	mainRunApexTests
 	mainPushAgain
-	mainFinalSetup
+	mainReassignAlias
 	mainGeneratePassword
 	QuitSuccess
 fi
 
+# Sample calls
+
+
+
+
+
+
+# ./@ELTOROIT/scripts/shell/CreateOrg.sh
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunJest
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainBackupAlias
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainCreateScratchOrg
@@ -381,11 +389,12 @@ fi
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainManualMetadataBefore
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexBeforePush
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainInstallPackages
+# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeploy
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainPushMetadata
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterPush
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainManualMetadataAfter
+# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterPush
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainAssignPermissionSet
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeplyAdminProfile
+# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeployAdminProfile
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainLoadData
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterData
 # ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunApexTests
