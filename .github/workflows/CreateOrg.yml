@@ -3,7 +3,7 @@ on: [push]
 jobs:
     build:
         runs-on: ubuntu-latest
-         env:
+        env:
             ET_CICD: true
         steps:
             - uses: actions/checkout@v2
