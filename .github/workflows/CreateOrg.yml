@@ -3,10 +3,15 @@ on: [push]
 jobs:
     build:
         runs-on: ubuntu-latest
+         env:
+            ET_CICD: true
         steps:
             - uses: actions/checkout@v2
             - name: Create etLogs folder
               run: mkdir -p etLogs
+            - name: PWD
+              run: pwd
+              if: ${{ env.ET_CICD  }}
             - name: Export token
               run: echo ${{ secrets.DEVHUB_TOKEN}} > etLogs/token.txt
             - name: Install tools
@@ -16,12 +21,39 @@ jobs:
                   tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
                   ./sfdx-cli/install
                   sfdx force:lightning:lwc:test:setup
-                  echo 'y' | sfdx plugins:install etcopydata
+                  echo 'y' | sfdx plugins:install etcopydata@beta
             - name: Register DevHub
               run: sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
-            - name: Create scratch org
-              run: ./@ELTOROIT/scripts/CreateOrg.sh
+            - name: Register DevHub
+              run: sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
+            - name: Run Jest
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunJest
+            - name: Create Scratch Org
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainCreateScratchOrg
+            - name: Open deploy page
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainOpenDeployPage
+            - name: Execute Apex Before Deployment
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexBeforePush
+            - name: Install Packages
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainInstallPackages
+            - name: Deploy Metadata
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeploy
+            - name: Execute Apex After Deployment
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterPush
+            - name: Assign Permission Set
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainAssignPermissionSet
+            - name: Deply Admin Profile
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeplyAdminProfile
+            - name: Load Data
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainLoadData
+            - name: Execute Apex After Data
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterData
+            - name: Generate Password
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainGeneratePassword
+            - name: Run Apex Tests
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunApexTests
             - name: Display etLogs
               run: |
                   ls -l etLogs
                   for filename in etLogs/*.json; do printf "\n\n\033[0;32mFile: %s \033[0m\n\n\n" $filename; cat $filename; done
+                  rm -r etLogs

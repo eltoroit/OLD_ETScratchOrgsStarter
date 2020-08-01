@@ -6,7 +6,9 @@
 	<img src="https://github.com/eltoroit/ETScratchOrgsStarter/blob/blog/@ELTOROIT/blog/HeaderImage.png?raw=true" alt="The Perfect SFDX Starter Project For Any Scratch Orgs Development" />
 </p>
 
-I love scratch orgs! But setting them up can be time consuming, so I created this template. I have found myself using this template anythime I need to create a scratch org for POC (proof-of-concept), demos or when I need to start a new project. I created this template containing all the core things that I need in a scratch org, and after I found it so useful, I decided to share it with you.
+**I love scratch ORGs!** But setting them up can be time-consuming, so I created this template. I have found myself using this template anytime I need to create a scratch org for POC (proof-of-concept), demos, or when I need to start a new project.
+
+This template contains all the core things that you will need in a scratch org, including scripts for setting up CI/CD. I am using GitHub Actions, but you could easily adjust it to other tools. I have been using it a lot, and I love it, **so I decided to share it with you!**
 
 Once I have the base template, I import the existing metadata from a sandbox or production Org using the techniques explained in the [SFDX Developer Guide | Project Setup](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_workspace_setup.htm).
 
