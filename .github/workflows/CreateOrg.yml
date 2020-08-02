@@ -30,8 +30,6 @@ jobs:
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunJest
             - name: Create Scratch Org
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainCreateScratchOrg
-            - name: Open deploy page
-              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainOpenDeployPage
             - name: Execute Apex Before Deployment
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexBeforePush
             - name: Install Packages
@@ -42,8 +40,6 @@ jobs:
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterPush
             - name: Assign Permission Set
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainAssignPermissionSet
-            - name: Deploy Admin Profile
-              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeployAdminProfile
             - name: Load Data
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainLoadData
             - name: Execute Apex After Data
