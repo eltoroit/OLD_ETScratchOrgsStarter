@@ -372,33 +372,3 @@ else
 	mainGeneratePassword
 	QuitSuccess
 fi
-
-# Sample calls
-
-
-
-
-
-
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunJest
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainBackupAlias
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainCreateScratchOrg
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainPauseToCheck
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainOpenDeployPage
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainManualMetadataBefore
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexBeforePush
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainInstallPackages
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeploy
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainPushMetadata
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainManualMetadataAfter
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterPush
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainAssignPermissionSet
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeployAdminProfile
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainLoadData
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterData
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunApexTests
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainPushAgain
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainFinalSetup
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh mainGeneratePassword
-# ./@ELTOROIT/scripts/shell/CreateOrg.sh QuitSuccess

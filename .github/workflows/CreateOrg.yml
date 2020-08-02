@@ -6,6 +6,7 @@ jobs:
         env:
             ET_CICD: true
         steps:
+            # Setup the Vitual Machine
             - uses: actions/checkout@v2
             - name: Create etLogs folder
               run: mkdir -p etLogs
@@ -24,6 +25,7 @@ jobs:
                   echo 'y' | sfdx plugins:install etcopydata@beta
             - name: Register DevHub
               run: sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
+            # Create scratch org
             - name: Run Jest
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunJest
             - name: Create Scratch Org
@@ -46,9 +48,10 @@ jobs:
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainGeneratePassword
             - name: Run Apex Tests
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunApexTests
-            - name: Clean etLogs
-              run: rm etLogs/token.txt
+            # Upload logs as artifacts
             - uses: actions/upload-artifact@v2
               with:
                   name: logs
-                  path: etLogs
+                  path: |
+                      etLogs
+                      !etLogs/token.txt
