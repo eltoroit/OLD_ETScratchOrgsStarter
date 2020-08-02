@@ -42,8 +42,8 @@ jobs:
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterPush
             - name: Assign Permission Set
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainAssignPermissionSet
-            - name: Deply Admin Profile
-              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeplyAdminProfile
+            - name: Deploy Admin Profile
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeployAdminProfile
             - name: Load Data
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainLoadData
             - name: Execute Apex After Data
