@@ -190,8 +190,6 @@ jobs:
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunApexTests
 ```
 
-**Warning:** I am a Mac developer, and this script was created and tested on a Mac and Linux (<a href="https://github.com/features/actions">GitHub Actions</a> and <a href="https://developer.salesforce.com/blogs/2020/06/introducing-code-builder.html">Salesforce Code Builder</a>). I believe that it could be easily executed on Windows 10 using <a href="https://en.m.wikipedia.org/wiki/Windows_Subsystem_for_Linux">WSL</a>.
-
 # Bonus content
 
 ## ./@ELTOROIT/scripts/DeleteOrgs.sh
@@ -199,3 +197,5 @@ jobs:
 One of the things I like to do with scratch Orgs is to create more scratch orgs than needed. This process helps me know the metadata I have in the repo is complete, and that I will be able to create a scratch org at any time. It also helps me prove the demos I am sharing with the world can work. This creates a ton of scratch Orgs, that need to be cleaned!
 
 This script looks for scratch orgs that do not have an alias associated (I may have re-used the alias with a new scratch org) and deletes them.
+
+**Warning:** I am a Mac developer, and this script was created and tested on a Mac and Linux (<a href="https://github.com/features/actions">GitHub Actions</a> and <a href="https://developer.salesforce.com/blogs/2020/06/introducing-code-builder.html">Salesforce Code Builder</a>). I believe that it could be easily executed on Windows 10 using <a href="https://docs.microsoft.com/en-us/windows/wsl/">WSL</a>.
