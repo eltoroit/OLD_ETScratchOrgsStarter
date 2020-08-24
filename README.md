@@ -190,7 +190,7 @@ jobs:
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunApexTests
 ```
 
-**Warning:** I am a Mac developer, and this script was created and tested on a Mac, but it could be easily converted to run on Windows. Are there any volunteers for a pull request?
+**Warning:** I am a Mac developer, and this script was created and tested on a Mac and Linux (GitHub Actions and Salesforce Code Builder), but it could be easily executed on Windows 10 using <a herd="https://en.m.wikipedia.org/wiki/Windows_Subsystem_for_Linux">WSL</a>.
 
 # Bonus content
 
