@@ -16,4 +16,4 @@ for row in $(sfdx force:org:list --json --all | jq -r '.result.scratchOrgs[] | s
 	echo "Delete Org: $(_jq '.alias')"
 	sfdx force:org:delete --noprompt --targetusername $(_jq '.username')
 done
-sfdx force:org:list
+sfdx force:org:list --clean --all --noprompt
