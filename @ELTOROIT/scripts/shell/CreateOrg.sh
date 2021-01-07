@@ -13,7 +13,7 @@
 	
 	# Install required packages before pushing
 	# Sample: PACKAGES=("04tB0000000P1yA" "04tB0000000P1yB" "04tB0000000P1yC")
-	PACKAGES=("04tB0000000P1yA")
+	PACKAGES=
 
 	# Permission Set name
 	PERM_SETS=("psTest")
@@ -36,13 +36,13 @@
 	PATH2SETUP_METADATA_AFTER=
 
 	# Do you have a community to publish?
-	# PUBLISH_COMMUNITY_NAME="Community Name"
+	# Sample: PUBLISH_COMMUNITY_NAME="Community Name"
 	PUBLISH_COMMUNITY_NAME=
 
 	# What is the sandbox to deply to?
-	# DEPLOY_TO_SANDBOX="Sandbox name"
+	# DSample: EPLOY_TO_SANDBOX="Sandbox name"
 	DEPLOY_TO_SANDBOX=
-	# DEPLOY_TO_SANDBOX_FOLDER="./force-apps/deploy"
+	# Sample: DEPLOY_TO_SANDBOX_FOLDER="./force-apps/deploy"
 	DEPLOY_TO_SANDBOX_FOLDER=
 
 # --- Batch boolean variables
@@ -69,7 +69,8 @@
 	PERFORM_DEPLOY=true
 
 	# Deploy Admin standard profile (helps set the visible apprlications, for example)
-	# ADMIN_PROFILE=./deploy/main/default/profiles/Admin.profile-meta.xml
+	# Sample: ADMIN_PROFILE=./deploy/main/default/profiles/Admin.profile-meta.xml
+	ADMIN_PROFILE=
 
 	# Do you want to use ETCopyData to import data?
 	IMPORT_DATA=true
