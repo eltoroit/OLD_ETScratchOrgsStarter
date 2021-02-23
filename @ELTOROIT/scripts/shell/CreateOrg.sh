@@ -70,7 +70,7 @@
 	PERFORM_DEPLOY=true
 
 	# Deploy Admin standard profile (helps set the visible apprlications, for example)
-	ADMIN_PROFILE=
+	ADMIN_PROFILE=force-apps/doNotDeploy/main/default/profiles/Admin.profile-meta.xml
 
 	# Do you want to use ETCopyData to import data?
 	IMPORT_DATA=true

@@ -1,5 +1,5 @@
 {
-	"alias": "soORG",
+	"alias": "soDEMO",
 	"importOrder": [
 		"Account",
 		"Campaign",
@@ -33,7 +33,7 @@
 					"sObj": "Opportunity"
 				}
 			],
-			"describeUrl": "/services/data/v50.0/sobjects/Account/describe",
+			"describeUrl": "/services/data/v51.0/sobjects/Account/describe",
 			"fields": [
 				"AccountNumber",
 				"AccountSource",
@@ -93,7 +93,7 @@
 					"sObj": "Opportunity"
 				}
 			],
-			"describeUrl": "/services/data/v50.0/sobjects/Campaign/describe",
+			"describeUrl": "/services/data/v51.0/sobjects/Campaign/describe",
 			"fields": [
 				"ActualCost",
 				"BudgetedCost",
@@ -119,7 +119,7 @@
 		},
 		"Case": {
 			"children": [],
-			"describeUrl": "/services/data/v50.0/sobjects/Case/describe",
+			"describeUrl": "/services/data/v51.0/sobjects/Case/describe",
 			"fields": [
 				"AccountId",
 				"Comments",
@@ -173,7 +173,7 @@
 					"sObj": "Opportunity"
 				}
 			],
-			"describeUrl": "/services/data/v50.0/sobjects/Contact/describe",
+			"describeUrl": "/services/data/v51.0/sobjects/Contact/describe",
 			"fields": [
 				"AccountId",
 				"AssistantName",
@@ -229,7 +229,7 @@
 		},
 		"Lead": {
 			"children": [],
-			"describeUrl": "/services/data/v50.0/sobjects/Lead/describe",
+			"describeUrl": "/services/data/v51.0/sobjects/Lead/describe",
 			"fields": [
 				"AnnualRevenue",
 				"City",
@@ -279,7 +279,7 @@
 					"sObj": "Lead"
 				}
 			],
-			"describeUrl": "/services/data/v50.0/sobjects/Opportunity/describe",
+			"describeUrl": "/services/data/v51.0/sobjects/Opportunity/describe",
 			"fields": [
 				"AccountId",
 				"Amount",
@@ -397,6 +397,8 @@
 		"AdditionalNumber": [],
 		"Address": [],
 		"AggregateResult": [],
+		"AlternativePaymentMethod": [],
+		"AlternativePaymentMethodShare": [],
 		"Announcement": [],
 		"ApexClass": [],
 		"ApexComponent": [],
@@ -420,8 +422,9 @@
 		"AppExtension": [],
 		"AppMenuItem": [],
 		"AppTabMember": [],
-		"AppleDomainVerification": [],
 		"Asset": [],
+		"AssetAction": [],
+		"AssetActionSource": [],
 		"AssetChangeEvent": [],
 		"AssetDowntimePeriod": [],
 		"AssetDowntimePeriodFeed": [],
@@ -432,6 +435,7 @@
 		"AssetRelationshipFeed": [],
 		"AssetRelationshipHistory": [],
 		"AssetShare": [],
+		"AssetStatePeriod": [],
 		"AssetTokenEvent": [],
 		"AssetWarranty": [],
 		"AssetWarrantyChangeEvent": [],
@@ -473,6 +477,10 @@
 		"BrandTemplate": [],
 		"BrandingSet": [],
 		"BrandingSetProperty": [],
+		"BriefcaseAssignment": [],
+		"BriefcaseDefinition": [],
+		"BriefcaseRule": [],
+		"BriefcaseRuleFilter": [],
 		"BulkApiResultEvent": [],
 		"BulkApiResultEventStore": [],
 		"BusinessHours": [],
@@ -568,6 +576,7 @@
 		"CaseContactRole": [],
 		"CaseFeed": [],
 		"CaseHistory": [],
+		"CaseMilestone": [],
 		"CaseShare": [],
 		"CaseSolution": [],
 		"CaseStatus": [],
@@ -610,7 +619,6 @@
 		"ConcurLongRunApexErrEvent": [],
 		"ConferenceNumber": [],
 		"ConnectedApplication": [],
-		"ConsentEvent": [],
 		"ConsumptionRate": [],
 		"ConsumptionRateHistory": [],
 		"ConsumptionSchedule": [],
@@ -735,6 +743,9 @@
 		"ContractContactRole": [],
 		"ContractFeed": [],
 		"ContractHistory": [],
+		"ContractLineItem": [],
+		"ContractLineItemChangeEvent": [],
+		"ContractLineItemHistory": [],
 		"ContractStatus": [],
 		"CorsWhitelistEntry": [],
 		"CredentialStuffingEvent": [],
@@ -805,7 +816,16 @@
 		"EngagementChannelTypeShare": [],
 		"EnhancedLetterhead": [],
 		"EnhancedLetterheadFeed": [],
+		"Entitlement": [],
+		"EntitlementChangeEvent": [],
+		"EntitlementContact": [],
+		"EntitlementFeed": [],
+		"EntitlementHistory": [],
+		"EntitlementTemplate": [],
 		"EntityDefinition": [],
+		"EntityMilestone": [],
+		"EntityMilestoneFeed": [],
+		"EntityMilestoneHistory": [],
 		"EntityParticle": [],
 		"EntitySubscription": [],
 		"Event": [],
@@ -846,7 +866,14 @@
 		"FieldPermissions": [],
 		"FieldSecurityClassification": [],
 		"FieldServiceMobileSettings": [],
+		"FieldServiceOrgSettings": [],
 		"FileSearchActivity": [],
+		"FinanceBalanceSnapshot": [],
+		"FinanceBalanceSnapshotChangeEvent": [],
+		"FinanceBalanceSnapshotShare": [],
+		"FinanceTransaction": [],
+		"FinanceTransactionChangeEvent": [],
+		"FinanceTransactionShare": [],
 		"FiscalYearSettings": [],
 		"FlexQueueItem": [],
 		"FlowDefinitionView": [],
@@ -873,10 +900,13 @@
 		"IconDefinition": [],
 		"Idea": [],
 		"IdeaComment": [],
+		"IdentityProviderEventStore": [],
 		"IdentityVerificationEvent": [],
 		"IdpEventLog": [],
 		"IframeWhiteListUrl": [],
 		"Image": [],
+		"ImageFeed": [],
+		"ImageHistory": [],
 		"ImageShare": [],
 		"Individual": [],
 		"IndividualChangeEvent": [],
@@ -950,6 +980,10 @@
 		"LeadHistory": [],
 		"LeadShare": [],
 		"LeadStatus": [],
+		"LegalEntity": [],
+		"LegalEntityFeed": [],
+		"LegalEntityHistory": [],
+		"LegalEntityShare": [],
 		"LightningExperienceTheme": [],
 		"LightningOnboardingConfig": [],
 		"LightningUriEvent": [],
@@ -997,9 +1031,14 @@
 		"MaintenancePlanFeed": [],
 		"MaintenancePlanHistory": [],
 		"MaintenancePlanShare": [],
+		"MaintenanceWorkRule": [],
+		"MaintenanceWorkRuleFeed": [],
+		"MaintenanceWorkRuleHistory": [],
+		"MaintenanceWorkRuleShare": [],
 		"MatchingInformation": [],
 		"MatchingRule": [],
 		"MatchingRuleItem": [],
+		"MilestoneType": [],
 		"MobileApplicationDetail": [],
 		"MobileSettingsAssignment": [],
 		"MutingPermissionSet": [],
@@ -1097,6 +1136,7 @@
 		"PartyConsentHistory": [],
 		"PartyConsentShare": [],
 		"Payment": [],
+		"PaymentAuthAdjustment": [],
 		"PaymentAuthorization": [],
 		"PaymentGateway": [],
 		"PaymentGatewayLog": [],
@@ -1123,6 +1163,9 @@
 		"PricebookEntry": [],
 		"PricebookEntryHistory": [],
 		"ProcessDefinition": [],
+		"ProcessException": [],
+		"ProcessExceptionEvent": [],
+		"ProcessExceptionShare": [],
 		"ProcessInstance": [],
 		"ProcessInstanceHistory": [],
 		"ProcessInstanceNode": [],
@@ -1138,6 +1181,7 @@
 		"ProductConsumedFeed": [],
 		"ProductConsumedHistory": [],
 		"ProductConsumptionSchedule": [],
+		"ProductEntitlementTemplate": [],
 		"ProductItem": [],
 		"ProductItemChangeEvent": [],
 		"ProductItemFeed": [],
@@ -1158,6 +1202,15 @@
 		"ProductRequired": [],
 		"ProductRequiredFeed": [],
 		"ProductRequiredHistory": [],
+		"ProductServiceCampaign": [],
+		"ProductServiceCampaignFeed": [],
+		"ProductServiceCampaignHistory": [],
+		"ProductServiceCampaignItem": [],
+		"ProductServiceCampaignItemFeed": [],
+		"ProductServiceCampaignItemHistory": [],
+		"ProductServiceCampaignItemStatus": [],
+		"ProductServiceCampaignShare": [],
+		"ProductServiceCampaignStatus": [],
 		"ProductTransfer": [],
 		"ProductTransferChangeEvent": [],
 		"ProductTransferFeed": [],
@@ -1187,6 +1240,11 @@
 		"RecordAction": [],
 		"RecordActionHistory": [],
 		"RecordType": [],
+		"RecordsetFilterCriteria": [],
+		"RecordsetFilterCriteriaFeed": [],
+		"RecordsetFilterCriteriaHistory": [],
+		"RecordsetFilterCriteriaRule": [],
+		"RecordsetFilterCriteriaShare": [],
 		"RedirectWhitelistUrl": [],
 		"Refund": [],
 		"RefundLinePayment": [],
@@ -1231,6 +1289,11 @@
 		"ServiceAppointmentHistory": [],
 		"ServiceAppointmentShare": [],
 		"ServiceAppointmentStatus": [],
+		"ServiceContract": [],
+		"ServiceContractChangeEvent": [],
+		"ServiceContractFeed": [],
+		"ServiceContractHistory": [],
+		"ServiceContractShare": [],
 		"ServiceCrew": [],
 		"ServiceCrewChangeEvent": [],
 		"ServiceCrewFeed": [],
@@ -1276,12 +1339,24 @@
 		"Shift": [],
 		"ShiftFeed": [],
 		"ShiftHistory": [],
+		"ShiftPattern": [],
+		"ShiftPatternEntry": [],
+		"ShiftPatternEntryFeed": [],
+		"ShiftPatternEntryHistory": [],
+		"ShiftPatternFeed": [],
+		"ShiftPatternHistory": [],
+		"ShiftPatternShare": [],
 		"ShiftShare": [],
 		"ShiftStatus": [],
+		"ShiftTemplate": [],
+		"ShiftTemplateShare": [],
 		"Shipment": [],
 		"ShipmentChangeEvent": [],
 		"ShipmentFeed": [],
 		"ShipmentHistory": [],
+		"ShipmentItem": [],
+		"ShipmentItemFeed": [],
+		"ShipmentItemHistory": [],
 		"ShipmentShare": [],
 		"Site": [],
 		"SiteDetail": [],
@@ -1292,6 +1367,7 @@
 		"SkillRequirement": [],
 		"SkillRequirementFeed": [],
 		"SkillRequirementHistory": [],
+		"SlaProcess": [],
 		"Solution": [],
 		"SolutionFeed": [],
 		"SolutionHistory": [],
@@ -1536,79 +1612,6 @@
 			"Case.LastReferencedDate": [
 				"Must be createable"
 			],
-			"Lead.IsDeleted": [
-				"Must be createable"
-			],
-			"Lead.MasterRecordId": [
-				"Must be createable",
-				"Recursive parenting for field references is supported, but requires the field to be configured as twoPassReferenceField"
-			],
-			"Lead.Name": [
-				"Must be createable"
-			],
-			"Lead.Address": [
-				"Must be createable"
-			],
-			"Lead.PhotoUrl": [
-				"Must be createable"
-			],
-			"Lead.OwnerId": [
-				"User asked for this field to be excluded",
-				"Reference, but it points to 0 or more than 1 sObject: | Group | User | "
-			],
-			"Lead.ConvertedDate": [
-				"Must be createable"
-			],
-			"Lead.ConvertedAccountId": [
-				"Must be createable"
-			],
-			"Lead.ConvertedContactId": [
-				"Must be createable"
-			],
-			"Lead.ConvertedOpportunityId": [
-				"Must be createable"
-			],
-			"Lead.CreatedDate": [
-				"Must be createable"
-			],
-			"Lead.CreatedById": [
-				"Must be createable",
-				"Parent sObject [User] is not processed"
-			],
-			"Lead.LastModifiedDate": [
-				"Must be createable"
-			],
-			"Lead.LastModifiedById": [
-				"Must be createable",
-				"Parent sObject [User] is not processed"
-			],
-			"Lead.SystemModstamp": [
-				"Must be createable"
-			],
-			"Lead.LastActivityDate": [
-				"Must be createable"
-			],
-			"Lead.LastViewedDate": [
-				"Must be createable"
-			],
-			"Lead.LastReferencedDate": [
-				"Must be createable"
-			],
-			"Lead.JigsawContactId": [
-				"Must be createable"
-			],
-			"Lead.DandbCompanyId": [
-				"Parent sObject [DandBCompany] is not processed"
-			],
-			"Lead.EmailBouncedReason": [
-				"Must be createable"
-			],
-			"Lead.EmailBouncedDate": [
-				"Must be createable"
-			],
-			"Lead.IndividualId": [
-				"Parent sObject [Individual] is not processed"
-			],
 			"Opportunity.IsDeleted": [
 				"Must be createable"
 			],
@@ -1682,6 +1685,79 @@
 			"Opportunity.LastCloseDateChangedHistoryId": [
 				"Must be createable",
 				"Parent sObject [OpportunityHistory] is not processed"
+			],
+			"Lead.IsDeleted": [
+				"Must be createable"
+			],
+			"Lead.MasterRecordId": [
+				"Must be createable",
+				"Recursive parenting for field references is supported, but requires the field to be configured as twoPassReferenceField"
+			],
+			"Lead.Name": [
+				"Must be createable"
+			],
+			"Lead.Address": [
+				"Must be createable"
+			],
+			"Lead.PhotoUrl": [
+				"Must be createable"
+			],
+			"Lead.OwnerId": [
+				"User asked for this field to be excluded",
+				"Reference, but it points to 0 or more than 1 sObject: | Group | User | "
+			],
+			"Lead.ConvertedDate": [
+				"Must be createable"
+			],
+			"Lead.ConvertedAccountId": [
+				"Must be createable"
+			],
+			"Lead.ConvertedContactId": [
+				"Must be createable"
+			],
+			"Lead.ConvertedOpportunityId": [
+				"Must be createable"
+			],
+			"Lead.CreatedDate": [
+				"Must be createable"
+			],
+			"Lead.CreatedById": [
+				"Must be createable",
+				"Parent sObject [User] is not processed"
+			],
+			"Lead.LastModifiedDate": [
+				"Must be createable"
+			],
+			"Lead.LastModifiedById": [
+				"Must be createable",
+				"Parent sObject [User] is not processed"
+			],
+			"Lead.SystemModstamp": [
+				"Must be createable"
+			],
+			"Lead.LastActivityDate": [
+				"Must be createable"
+			],
+			"Lead.LastViewedDate": [
+				"Must be createable"
+			],
+			"Lead.LastReferencedDate": [
+				"Must be createable"
+			],
+			"Lead.JigsawContactId": [
+				"Must be createable"
+			],
+			"Lead.DandbCompanyId": [
+				"Parent sObject [DandBCompany] is not processed"
+			],
+			"Lead.EmailBouncedReason": [
+				"Must be createable"
+			],
+			"Lead.EmailBouncedDate": [
+				"Must be createable"
+			],
+			"Lead.IndividualId": [
+				"Parent sObject [Individual] is not processed"
 			],
 			"Contact.IsDeleted": [
 				"Must be createable"
@@ -1957,6 +2033,9 @@
 			"Case.Histories => CaseHistory": [
 				"Child sObject [CaseHistory] is not processed"
 			],
+			"Case.CaseMilestones => CaseMilestone": [
+				"Child sObject [CaseMilestone] is not processed"
+			],
 			"Case.Shares => CaseShare": [
 				"Child sObject [CaseShare] is not processed"
 			],
@@ -2023,6 +2102,9 @@
 			"Case.OpenActivities => OpenActivity": [
 				"Child sObject [OpenActivity] is not processed"
 			],
+			"Case.ProcessExceptions => ProcessException": [
+				"Child sObject [ProcessException] is not processed"
+			],
 			"Case.ProcessInstances => ProcessInstance": [
 				"Child sObject [ProcessInstance] is not processed"
 			],
@@ -2067,6 +2149,138 @@
 			],
 			"Case.null => WorkOrderChangeEvent": [
 				"Child sObject [WorkOrderChangeEvent] is not processed"
+			],
+			"Opportunity.AccountPartners => AccountPartner": [
+				"Child sObject [AccountPartner] is not processed"
+			],
+			"Opportunity.ActivityHistories => ActivityHistory": [
+				"Child sObject [ActivityHistory] is not processed"
+			],
+			"Opportunity.AttachedContentDocuments => AttachedContentDocument": [
+				"Child sObject [AttachedContentDocument] is not processed"
+			],
+			"Opportunity.Attachments => Attachment": [
+				"Child sObject [Attachment] is not processed"
+			],
+			"Opportunity.RecordAssociatedGroups => CollaborationGroupRecord": [
+				"Child sObject [CollaborationGroupRecord] is not processed"
+			],
+			"Opportunity.CombinedAttachments => CombinedAttachment": [
+				"Child sObject [CombinedAttachment] is not processed"
+			],
+			"Opportunity.ContactRequests => ContactRequest": [
+				"Child sObject [ContactRequest] is not processed"
+			],
+			"Opportunity.null => ContentDistribution": [
+				"Child sObject [ContentDistribution] is not processed"
+			],
+			"Opportunity.ContentDocumentLinks => ContentDocumentLink": [
+				"Child sObject [ContentDocumentLink] is not processed"
+			],
+			"Opportunity.null => ContentVersion": [
+				"Child sObject [ContentVersion] is not processed"
+			],
+			"Opportunity.Emails => EmailMessage": [
+				"Child sObject [EmailMessage] is not processed"
+			],
+			"Opportunity.null => EmailMessageChangeEvent": [
+				"Child sObject [EmailMessageChangeEvent] is not processed"
+			],
+			"Opportunity.FeedSubscriptionsForEntity => EntitySubscription": [
+				"Child sObject [EntitySubscription] is not processed"
+			],
+			"Opportunity.Events => Event": [
+				"Child sObject [Event] is not processed"
+			],
+			"Opportunity.null => EventChangeEvent": [
+				"Child sObject [EventChangeEvent] is not processed"
+			],
+			"Opportunity.null => EventRelationChangeEvent": [
+				"Child sObject [EventRelationChangeEvent] is not processed"
+			],
+			"Opportunity.null => FeedComment": [
+				"Child sObject [FeedComment] is not processed"
+			],
+			"Opportunity.null => FeedItem": [
+				"Child sObject [FeedItem] is not processed"
+			],
+			"Opportunity.null => FlowExecutionErrorEvent": [
+				"Child sObject [FlowExecutionErrorEvent] is not processed"
+			],
+			"Opportunity.null => FlowRecordRelation": [
+				"Child sObject [FlowRecordRelation] is not processed"
+			],
+			"Opportunity.null => LeadChangeEvent": [
+				"Child sObject [LeadChangeEvent] is not processed"
+			],
+			"Opportunity.Notes => Note": [
+				"Child sObject [Note] is not processed"
+			],
+			"Opportunity.NotesAndAttachments => NoteAndAttachment": [
+				"Child sObject [NoteAndAttachment] is not processed"
+			],
+			"Opportunity.OpenActivities => OpenActivity": [
+				"Child sObject [OpenActivity] is not processed"
+			],
+			"Opportunity.OpportunityCompetitors => OpportunityCompetitor": [
+				"Child sObject [OpportunityCompetitor] is not processed"
+			],
+			"Opportunity.OpportunityContactRoles => OpportunityContactRole": [
+				"Child sObject [OpportunityContactRole] is not processed"
+			],
+			"Opportunity.null => OpportunityContactRoleChangeEvent": [
+				"Child sObject [OpportunityContactRoleChangeEvent] is not processed"
+			],
+			"Opportunity.Feeds => OpportunityFeed": [
+				"Child sObject [OpportunityFeed] is not processed"
+			],
+			"Opportunity.Histories => OpportunityFieldHistory": [
+				"Child sObject [OpportunityFieldHistory] is not processed"
+			],
+			"Opportunity.OpportunityHistories => OpportunityHistory": [
+				"Child sObject [OpportunityHistory] is not processed"
+			],
+			"Opportunity.OpportunityLineItems => OpportunityLineItem": [
+				"Child sObject [OpportunityLineItem] is not processed"
+			],
+			"Opportunity.OpportunityPartnersFrom => OpportunityPartner": [
+				"Child sObject [OpportunityPartner] is not processed"
+			],
+			"Opportunity.Shares => OpportunityShare": [
+				"Child sObject [OpportunityShare] is not processed"
+			],
+			"Opportunity.null => OutgoingEmail": [
+				"Child sObject [OutgoingEmail] is not processed"
+			],
+			"Opportunity.Partners => Partner": [
+				"Child sObject [Partner] is not processed"
+			],
+			"Opportunity.ProcessInstances => ProcessInstance": [
+				"Child sObject [ProcessInstance] is not processed"
+			],
+			"Opportunity.ProcessSteps => ProcessInstanceHistory": [
+				"Child sObject [ProcessInstanceHistory] is not processed"
+			],
+			"Opportunity.RecordActions => RecordAction": [
+				"Child sObject [RecordAction] is not processed"
+			],
+			"Opportunity.RecordActionHistories => RecordActionHistory": [
+				"Child sObject [RecordActionHistory] is not processed"
+			],
+			"Opportunity.ServiceAppointments => ServiceAppointment": [
+				"Child sObject [ServiceAppointment] is not processed"
+			],
+			"Opportunity.null => ServiceAppointmentChangeEvent": [
+				"Child sObject [ServiceAppointmentChangeEvent] is not processed"
+			],
+			"Opportunity.Tasks => Task": [
+				"Child sObject [Task] is not processed"
+			],
+			"Opportunity.null => TaskChangeEvent": [
+				"Child sObject [TaskChangeEvent] is not processed"
+			],
+			"Opportunity.TopicAssignments => TopicAssignment": [
+				"Child sObject [TopicAssignment] is not processed"
 			],
 			"Lead.AcceptedEventRelations => AcceptedEventRelation": [
 				"Child sObject [AcceptedEventRelation] is not processed"
@@ -2209,138 +2423,6 @@
 			"Lead.PersonRecord => UserEmailPreferredPerson": [
 				"Child sObject [UserEmailPreferredPerson] is not processed"
 			],
-			"Opportunity.AccountPartners => AccountPartner": [
-				"Child sObject [AccountPartner] is not processed"
-			],
-			"Opportunity.ActivityHistories => ActivityHistory": [
-				"Child sObject [ActivityHistory] is not processed"
-			],
-			"Opportunity.AttachedContentDocuments => AttachedContentDocument": [
-				"Child sObject [AttachedContentDocument] is not processed"
-			],
-			"Opportunity.Attachments => Attachment": [
-				"Child sObject [Attachment] is not processed"
-			],
-			"Opportunity.RecordAssociatedGroups => CollaborationGroupRecord": [
-				"Child sObject [CollaborationGroupRecord] is not processed"
-			],
-			"Opportunity.CombinedAttachments => CombinedAttachment": [
-				"Child sObject [CombinedAttachment] is not processed"
-			],
-			"Opportunity.ContactRequests => ContactRequest": [
-				"Child sObject [ContactRequest] is not processed"
-			],
-			"Opportunity.null => ContentDistribution": [
-				"Child sObject [ContentDistribution] is not processed"
-			],
-			"Opportunity.ContentDocumentLinks => ContentDocumentLink": [
-				"Child sObject [ContentDocumentLink] is not processed"
-			],
-			"Opportunity.null => ContentVersion": [
-				"Child sObject [ContentVersion] is not processed"
-			],
-			"Opportunity.Emails => EmailMessage": [
-				"Child sObject [EmailMessage] is not processed"
-			],
-			"Opportunity.null => EmailMessageChangeEvent": [
-				"Child sObject [EmailMessageChangeEvent] is not processed"
-			],
-			"Opportunity.FeedSubscriptionsForEntity => EntitySubscription": [
-				"Child sObject [EntitySubscription] is not processed"
-			],
-			"Opportunity.Events => Event": [
-				"Child sObject [Event] is not processed"
-			],
-			"Opportunity.null => EventChangeEvent": [
-				"Child sObject [EventChangeEvent] is not processed"
-			],
-			"Opportunity.null => EventRelationChangeEvent": [
-				"Child sObject [EventRelationChangeEvent] is not processed"
-			],
-			"Opportunity.null => FeedComment": [
-				"Child sObject [FeedComment] is not processed"
-			],
-			"Opportunity.null => FeedItem": [
-				"Child sObject [FeedItem] is not processed"
-			],
-			"Opportunity.null => FlowExecutionErrorEvent": [
-				"Child sObject [FlowExecutionErrorEvent] is not processed"
-			],
-			"Opportunity.null => FlowRecordRelation": [
-				"Child sObject [FlowRecordRelation] is not processed"
-			],
-			"Opportunity.null => LeadChangeEvent": [
-				"Child sObject [LeadChangeEvent] is not processed"
-			],
-			"Opportunity.Notes => Note": [
-				"Child sObject [Note] is not processed"
-			],
-			"Opportunity.NotesAndAttachments => NoteAndAttachment": [
-				"Child sObject [NoteAndAttachment] is not processed"
-			],
-			"Opportunity.OpenActivities => OpenActivity": [
-				"Child sObject [OpenActivity] is not processed"
-			],
-			"Opportunity.OpportunityCompetitors => OpportunityCompetitor": [
-				"Child sObject [OpportunityCompetitor] is not processed"
-			],
-			"Opportunity.OpportunityContactRoles => OpportunityContactRole": [
-				"Child sObject [OpportunityContactRole] is not processed"
-			],
-			"Opportunity.null => OpportunityContactRoleChangeEvent": [
-				"Child sObject [OpportunityContactRoleChangeEvent] is not processed"
-			],
-			"Opportunity.Feeds => OpportunityFeed": [
-				"Child sObject [OpportunityFeed] is not processed"
-			],
-			"Opportunity.Histories => OpportunityFieldHistory": [
-				"Child sObject [OpportunityFieldHistory] is not processed"
-			],
-			"Opportunity.OpportunityHistories => OpportunityHistory": [
-				"Child sObject [OpportunityHistory] is not processed"
-			],
-			"Opportunity.OpportunityLineItems => OpportunityLineItem": [
-				"Child sObject [OpportunityLineItem] is not processed"
-			],
-			"Opportunity.OpportunityPartnersFrom => OpportunityPartner": [
-				"Child sObject [OpportunityPartner] is not processed"
-			],
-			"Opportunity.Shares => OpportunityShare": [
-				"Child sObject [OpportunityShare] is not processed"
-			],
-			"Opportunity.null => OutgoingEmail": [
-				"Child sObject [OutgoingEmail] is not processed"
-			],
-			"Opportunity.Partners => Partner": [
-				"Child sObject [Partner] is not processed"
-			],
-			"Opportunity.ProcessInstances => ProcessInstance": [
-				"Child sObject [ProcessInstance] is not processed"
-			],
-			"Opportunity.ProcessSteps => ProcessInstanceHistory": [
-				"Child sObject [ProcessInstanceHistory] is not processed"
-			],
-			"Opportunity.RecordActions => RecordAction": [
-				"Child sObject [RecordAction] is not processed"
-			],
-			"Opportunity.RecordActionHistories => RecordActionHistory": [
-				"Child sObject [RecordActionHistory] is not processed"
-			],
-			"Opportunity.ServiceAppointments => ServiceAppointment": [
-				"Child sObject [ServiceAppointment] is not processed"
-			],
-			"Opportunity.null => ServiceAppointmentChangeEvent": [
-				"Child sObject [ServiceAppointmentChangeEvent] is not processed"
-			],
-			"Opportunity.Tasks => Task": [
-				"Child sObject [Task] is not processed"
-			],
-			"Opportunity.null => TaskChangeEvent": [
-				"Child sObject [TaskChangeEvent] is not processed"
-			],
-			"Opportunity.TopicAssignments => TopicAssignment": [
-				"Child sObject [TopicAssignment] is not processed"
-			],
 			"Contact.AcceptedEventRelations => AcceptedEventRelation": [
 				"Child sObject [AcceptedEventRelation] is not processed"
 			],
@@ -2455,6 +2537,9 @@
 			"Contact.EmailStatuses => EmailStatus": [
 				"Child sObject [EmailStatus] is not processed"
 			],
+			"Contact.EntitlementContacts => EntitlementContact": [
+				"Child sObject [EntitlementContact] is not processed"
+			],
 			"Contact.FeedSubscriptionsForEntity => EntitySubscription": [
 				"Child sObject [EntitySubscription] is not processed"
 			],
@@ -2551,6 +2636,12 @@
 			"Contact.null => ServiceAppointmentChangeEvent": [
 				"Child sObject [ServiceAppointmentChangeEvent] is not processed"
 			],
+			"Contact.ServiceContracts => ServiceContract": [
+				"Child sObject [ServiceContract] is not processed"
+			],
+			"Contact.null => ServiceContractChangeEvent": [
+				"Child sObject [ServiceContractChangeEvent] is not processed"
+			],
 			"Contact.Tasks => Task": [
 				"Child sObject [Task] is not processed"
 			],
@@ -2611,6 +2702,9 @@
 			"Account.ActivityHistories => ActivityHistory": [
 				"Child sObject [ActivityHistory] is not processed"
 			],
+			"Account.AlternativePaymentMethods => AlternativePaymentMethod": [
+				"Child sObject [AlternativePaymentMethod] is not processed"
+			],
 			"Account.Assets => Asset": [
 				"Child sObject [Asset] is not processed"
 			],
@@ -2640,6 +2734,9 @@
 			],
 			"Account.null => AuthorizationFormConsentChangeEvent": [
 				"Child sObject [AuthorizationFormConsentChangeEvent] is not processed"
+			],
+			"Account.null => CampaignMember": [
+				"Child sObject [CampaignMember] is not processed"
 			],
 			"Account.CardPaymentMethods => CardPaymentMethod": [
 				"Child sObject [CardPaymentMethod] is not processed"
@@ -2710,6 +2807,12 @@
 			"Account.null => EmailMessageChangeEvent": [
 				"Child sObject [EmailMessageChangeEvent] is not processed"
 			],
+			"Account.Entitlements => Entitlement": [
+				"Child sObject [Entitlement] is not processed"
+			],
+			"Account.null => EntitlementChangeEvent": [
+				"Child sObject [EntitlementChangeEvent] is not processed"
+			],
 			"Account.FeedSubscriptionsForEntity => EntitySubscription": [
 				"Child sObject [EntitySubscription] is not processed"
 			],
@@ -2733,6 +2836,18 @@
 			],
 			"Account.null => FeedItem": [
 				"Child sObject [FeedItem] is not processed"
+			],
+			"Account.FinanceBalanceSnapshots => FinanceBalanceSnapshot": [
+				"Child sObject [FinanceBalanceSnapshot] is not processed"
+			],
+			"Account.null => FinanceBalanceSnapshotChangeEvent": [
+				"Child sObject [FinanceBalanceSnapshotChangeEvent] is not processed"
+			],
+			"Account.FinanceTransactions => FinanceTransaction": [
+				"Child sObject [FinanceTransaction] is not processed"
+			],
+			"Account.null => FinanceTransactionChangeEvent": [
+				"Child sObject [FinanceTransactionChangeEvent] is not processed"
 			],
 			"Account.null => FlowExecutionErrorEvent": [
 				"Child sObject [FlowExecutionErrorEvent] is not processed"
@@ -2781,6 +2896,9 @@
 			],
 			"Account.Payments => Payment": [
 				"Child sObject [Payment] is not processed"
+			],
+			"Account.PaymentAuthAdjustments => PaymentAuthAdjustment": [
+				"Child sObject [PaymentAuthAdjustment] is not processed"
 			],
 			"Account.PaymentAuthorizations => PaymentAuthorization": [
 				"Child sObject [PaymentAuthorization] is not processed"
@@ -2835,6 +2953,12 @@
 			],
 			"Account.null => ServiceAppointmentChangeEvent": [
 				"Child sObject [ServiceAppointmentChangeEvent] is not processed"
+			],
+			"Account.ServiceContracts => ServiceContract": [
+				"Child sObject [ServiceContract] is not processed"
+			],
+			"Account.null => ServiceContractChangeEvent": [
+				"Child sObject [ServiceContractChangeEvent] is not processed"
 			],
 			"Account.ServiceResources => ServiceResource": [
 				"Child sObject [ServiceResource] is not processed"
@@ -2952,6 +3076,13 @@
 				"Must be replicateable",
 				"Must be retrieveable",
 				"Must be updateable",
+				"Was Not requested"
+			],
+			"AlternativePaymentMethod": [
+				"Was Not requested"
+			],
+			"AlternativePaymentMethodShare": [
+				"Must be replicateable",
 				"Was Not requested"
 			],
 			"Announcement": [
@@ -3074,14 +3205,19 @@
 				"Must be updateable",
 				"Was Not requested"
 			],
-			"AppleDomainVerification": [
+			"Asset": [
+				"Was Not requested"
+			],
+			"AssetAction": [
 				"Must be createable",
 				"Must be deletable",
-				"Must be replicateable",
 				"Must be updateable",
 				"Was Not requested"
 			],
-			"Asset": [
+			"AssetActionSource": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
 				"Was Not requested"
 			],
 			"AssetChangeEvent": [
@@ -3135,6 +3271,12 @@
 				"Must be createable",
 				"Must be deletable",
 				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"AssetStatePeriod": [
+				"Must be createable",
+				"Must be deletable",
 				"Must be updateable",
 				"Was Not requested"
 			],
@@ -3368,6 +3510,31 @@
 				"Must be replicateable",
 				"Was Not requested"
 			],
+			"BriefcaseAssignment": [
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"BriefcaseDefinition": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"BriefcaseRule": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"BriefcaseRuleFilter": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
 			"BulkApiResultEvent": [
 				"Must be createable",
 				"Must be deletable",
@@ -3488,6 +3655,12 @@
 				"Must be createable",
 				"Must be deletable",
 				"Must be updateable",
+				"Was Not requested"
+			],
+			"CaseMilestone": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be replicateable",
 				"Was Not requested"
 			],
 			"CaseShare": [
@@ -3691,15 +3864,6 @@
 				"Must be updateable",
 				"Was Not requested"
 			],
-			"ConsentEvent": [
-				"Must be createable",
-				"Must be deletable",
-				"Must be queryable",
-				"Must be replicateable",
-				"Must be retrieveable",
-				"Must be updateable",
-				"Was Not requested"
-			],
 			"ConsumptionRate": [
 				"Was Not requested"
 			],
@@ -3864,10 +4028,7 @@
 				"Was Not requested"
 			],
 			"ContactShare": [
-				"Must be createable",
-				"Must be deletable",
 				"Must be replicateable",
-				"Must be updateable",
 				"Was Not requested"
 			],
 			"ContentAsset": [
@@ -4023,6 +4184,23 @@
 				"Was Not requested"
 			],
 			"ContractHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ContractLineItem": [
+				"Was Not requested"
+			],
+			"ContractLineItemChangeEvent": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be queryable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ContractLineItemHistory": [
 				"Must be createable",
 				"Must be deletable",
 				"Must be updateable",
@@ -4412,11 +4590,57 @@
 				"Must be updateable",
 				"Was Not requested"
 			],
+			"Entitlement": [
+				"Was Not requested"
+			],
+			"EntitlementChangeEvent": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be queryable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"EntitlementContact": [
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"EntitlementFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"EntitlementHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"EntitlementTemplate": [
+				"Must be replicateable",
+				"Was Not requested"
+			],
 			"EntityDefinition": [
 				"Must be createable",
 				"Must be deletable",
 				"Must be replicateable",
 				"Must be retrieveable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"EntityMilestone": [
+				"Must be createable",
+				"Must be deletable",
+				"Was Not requested"
+			],
+			"EntityMilestoneFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"EntityMilestoneHistory": [
+				"Must be createable",
+				"Must be deletable",
 				"Must be updateable",
 				"Was Not requested"
 			],
@@ -4627,10 +4851,50 @@
 				"Must be replicateable",
 				"Was Not requested"
 			],
+			"FieldServiceOrgSettings": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
 			"FileSearchActivity": [
 				"Must be createable",
 				"Must be deletable",
 				"Must be updateable",
+				"Was Not requested"
+			],
+			"FinanceBalanceSnapshot": [
+				"Must be createable",
+				"Must be deletable",
+				"Was Not requested"
+			],
+			"FinanceBalanceSnapshotChangeEvent": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be queryable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"FinanceBalanceSnapshotShare": [
+				"Must be replicateable",
+				"Was Not requested"
+			],
+			"FinanceTransaction": [
+				"Must be deletable",
+				"Was Not requested"
+			],
+			"FinanceTransactionChangeEvent": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be queryable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"FinanceTransactionShare": [
+				"Must be replicateable",
 				"Was Not requested"
 			],
 			"FiscalYearSettings": [
@@ -4784,6 +5048,14 @@
 			"IdeaComment": [
 				"Was Not requested"
 			],
+			"IdentityProviderEventStore": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be replicateable",
+				"Must be retrieveable",
+				"Must be updateable",
+				"Was Not requested"
+			],
 			"IdentityVerificationEvent": [
 				"Must be createable",
 				"Must be deletable",
@@ -4804,6 +5076,17 @@
 				"Was Not requested"
 			],
 			"Image": [
+				"Was Not requested"
+			],
+			"ImageFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ImageHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
 				"Was Not requested"
 			],
 			"ImageShare": [
@@ -4895,6 +5178,24 @@
 				"Must be deletable",
 				"Must be replicateable",
 				"Must be updateable",
+				"Was Not requested"
+			],
+			"LegalEntity": [
+				"Was Not requested"
+			],
+			"LegalEntityFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"LegalEntityHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"LegalEntityShare": [
+				"Must be replicateable",
 				"Was Not requested"
 			],
 			"LightningExperienceTheme": [
@@ -5178,6 +5479,24 @@
 				"Must be replicateable",
 				"Was Not requested"
 			],
+			"MaintenanceWorkRule": [
+				"Was Not requested"
+			],
+			"MaintenanceWorkRuleFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"MaintenanceWorkRuleHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"MaintenanceWorkRuleShare": [
+				"Must be replicateable",
+				"Was Not requested"
+			],
 			"MatchingInformation": [
 				"Was Not requested"
 			],
@@ -5193,6 +5512,10 @@
 				"Must be deletable",
 				"Must be replicateable",
 				"Must be updateable",
+				"Was Not requested"
+			],
+			"MilestoneType": [
+				"Must be replicateable",
 				"Was Not requested"
 			],
 			"MobileApplicationDetail": [
@@ -5506,6 +5829,9 @@
 			"Payment": [
 				"Was Not requested"
 			],
+			"PaymentAuthAdjustment": [
+				"Was Not requested"
+			],
 			"PaymentAuthorization": [
 				"Was Not requested"
 			],
@@ -5526,7 +5852,6 @@
 				"Must be createable",
 				"Must be deletable",
 				"Must be replicateable",
-				"Must be retrieveable",
 				"Must be updateable",
 				"Was Not requested"
 			],
@@ -5644,6 +5969,21 @@
 				"Must be updateable",
 				"Was Not requested"
 			],
+			"ProcessException": [
+				"Was Not requested"
+			],
+			"ProcessExceptionEvent": [
+				"Must be deletable",
+				"Must be queryable",
+				"Must be replicateable",
+				"Must be retrieveable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ProcessExceptionShare": [
+				"Must be replicateable",
+				"Was Not requested"
+			],
 			"ProcessInstance": [
 				"Must be createable",
 				"Must be deletable",
@@ -5730,6 +6070,11 @@
 				"Was Not requested"
 			],
 			"ProductConsumptionSchedule": [
+				"Was Not requested"
+			],
+			"ProductEntitlementTemplate": [
+				"Must be replicateable",
+				"Must be updateable",
 				"Was Not requested"
 			],
 			"ProductItem": [
@@ -5832,6 +6177,52 @@
 			"ProductRequiredHistory": [
 				"Must be createable",
 				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ProductServiceCampaign": [
+				"Was Not requested"
+			],
+			"ProductServiceCampaignFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ProductServiceCampaignHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ProductServiceCampaignItem": [
+				"Was Not requested"
+			],
+			"ProductServiceCampaignItemFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ProductServiceCampaignItemHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ProductServiceCampaignItemStatus": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ProductServiceCampaignShare": [
+				"Must be replicateable",
+				"Was Not requested"
+			],
+			"ProductServiceCampaignStatus": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be replicateable",
 				"Must be updateable",
 				"Was Not requested"
 			],
@@ -5979,6 +6370,27 @@
 			],
 			"RecordType": [
 				"Must be deletable",
+				"Was Not requested"
+			],
+			"RecordsetFilterCriteria": [
+				"Was Not requested"
+			],
+			"RecordsetFilterCriteriaFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"RecordsetFilterCriteriaHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"RecordsetFilterCriteriaRule": [
+				"Was Not requested"
+			],
+			"RecordsetFilterCriteriaShare": [
+				"Must be replicateable",
 				"Was Not requested"
 			],
 			"RedirectWhitelistUrl": [
@@ -6238,6 +6650,32 @@
 				"Must be updateable",
 				"Was Not requested"
 			],
+			"ServiceContract": [
+				"Was Not requested"
+			],
+			"ServiceContractChangeEvent": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be queryable",
+				"Must be replicateable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ServiceContractFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ServiceContractHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ServiceContractShare": [
+				"Must be replicateable",
+				"Was Not requested"
+			],
 			"ServiceCrew": [
 				"Was Not requested"
 			],
@@ -6477,6 +6915,38 @@
 				"Must be updateable",
 				"Was Not requested"
 			],
+			"ShiftPattern": [
+				"Was Not requested"
+			],
+			"ShiftPatternEntry": [
+				"Was Not requested"
+			],
+			"ShiftPatternEntryFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ShiftPatternEntryHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ShiftPatternFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ShiftPatternHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ShiftPatternShare": [
+				"Must be replicateable",
+				"Was Not requested"
+			],
 			"ShiftShare": [
 				"Must be replicateable",
 				"Was Not requested"
@@ -6486,6 +6956,13 @@
 				"Must be deletable",
 				"Must be replicateable",
 				"Must be updateable",
+				"Was Not requested"
+			],
+			"ShiftTemplate": [
+				"Was Not requested"
+			],
+			"ShiftTemplateShare": [
+				"Must be replicateable",
 				"Was Not requested"
 			],
 			"Shipment": [
@@ -6505,6 +6982,20 @@
 				"Was Not requested"
 			],
 			"ShipmentHistory": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ShipmentItem": [
+				"Was Not requested"
+			],
+			"ShipmentItemFeed": [
+				"Must be createable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"ShipmentItemHistory": [
 				"Must be createable",
 				"Must be deletable",
 				"Must be updateable",
@@ -6560,6 +7051,13 @@
 			"SkillRequirementHistory": [
 				"Must be createable",
 				"Must be deletable",
+				"Must be updateable",
+				"Was Not requested"
+			],
+			"SlaProcess": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be replicateable",
 				"Must be updateable",
 				"Was Not requested"
 			],

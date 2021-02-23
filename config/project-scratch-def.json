@@ -9,11 +9,6 @@
 		},
 		"lightningExperienceSettings": {
 			"enableS1DesktopEnabled": true
-		},
-		"securitySettings": {
-			"passwordPolicies": {
-				"enableSetPasswordInApi": true
-			}
 		}
 	}
 }
