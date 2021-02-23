@@ -123,7 +123,8 @@ function et_sfdxDeploy(){
 }
 function jq_sfdxGeneratePassword() {
 	et_sfdx force:user:password:generate --json
-
+	et_sfdx force:user:display --json
+	
 	# https://github.com/forcedotcom/cli/issues/417
 	# Display has a bug where the password is encripted on display and can't be shown. 
 	# Issue has been fixed, so no need for this anymore
@@ -339,7 +340,7 @@ function mainLoadData() {
 		# sfdx ETCopyData:delete --orgdestination=sbTVB4S_CICD -c "./@ELTOROIT/data" --loglevel trace --json > ./etLogs/etCopyData.tab
 		# sfdx ETCopyData:export -c "./@ELTOROIT/data" --loglevel trace --json > ./etLogs/etCopyData.tab
 		# sfdx ETCopyData:import -c "./@ELTOROIT/data" --loglevel trace --json > ./etLogs/etCopyData.tab
-		et_sfdx ETCopyData:import -c "./@ELTOROIT/data" --loglevel info --json --orgsource="$ALIAS" --orgdestination="$ALIAS"
+		et_sfdx ETCopyData:import -c "$ETCOPYDATA_FOLDER" --loglevel info --json --orgsource="$ALIAS" --orgdestination="$ALIAS"
 		showComplete
 	fi
 }

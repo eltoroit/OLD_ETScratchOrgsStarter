@@ -1,15 +1,16 @@
 {
 	"packageDirectories": [
+		{ "path": "force-apps/doFirst", "default": false },
 		{
-			"path": "doNotDeploy",
-			"default": false
+			"path": "force-apps/deploy",
+			"default": true
 		},
 		{
-			"path": "deploy",
-			"default": true
+			"path": "force-apps/doNotDeploy",
+			"default": false
 		}
 	],
 	"namespace": "",
 	"sfdcLoginUrl": "https://login.salesforce.com",
-	"sourceApiVersion": "49.0"
+	"sourceApiVersion": "51.0"
 }

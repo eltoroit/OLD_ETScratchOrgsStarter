@@ -6,7 +6,7 @@
 
 # --- Batch variables
 	# Alias for scratch org
-	ALIAS=soORG
+	ALIAS=soDEMO
 
 	# How long will the scratch org live (max 30)
 	DAYS=1
@@ -15,10 +15,11 @@
 	# Sample: PACKAGES=("04tB0000000P1yA" "04tB0000000P1yB" "04tB0000000P1yC")
 	PACKAGES=
 
-	# Permission Set name
+	# Permission Set names
 	PERM_SETS=("psTest")
 
 	# Prepare scratch org for deployment. Some metadata needs to be deployed first.
+	# Sample: PREPARE_ORG=("@ELTOROIT/metadata/API/")
 	PREPARE_ORG=("@ELTOROIT/metadata/API/")
 	
 	# Path to Apex code to execute anonymously, multiple files can be executed at each step, if multiple Apex transactions are needed
@@ -40,7 +41,7 @@
 	PUBLISH_COMMUNITY_NAME=
 
 	# What is the sandbox to deply to?
-	# DSample: EPLOY_TO_SANDBOX="Sandbox name"
+	# Sample: DEPLOY_TO_SANDBOX="Sandbox sfdx alias"
 	DEPLOY_TO_SANDBOX=
 	# Sample: DEPLOY_TO_SANDBOX_FOLDER="./force-apps/deploy"
 	DEPLOY_TO_SANDBOX_FOLDER=
@@ -69,11 +70,11 @@
 	PERFORM_DEPLOY=true
 
 	# Deploy Admin standard profile (helps set the visible apprlications, for example)
-	# Sample: ADMIN_PROFILE=./deploy/main/default/profiles/Admin.profile-meta.xml
 	ADMIN_PROFILE=
 
 	# Do you want to use ETCopyData to import data?
 	IMPORT_DATA=true
+	ETCOPYDATA_FOLDER="./@ELTOROIT/data"
 
 	# Do you want to run APEX tests in this new org before starting?
 	RUN_APEX_TESTS=true
