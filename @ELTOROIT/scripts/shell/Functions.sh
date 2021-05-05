@@ -15,7 +15,11 @@ function showCommand() {
 }
 function showComplete() {
 	# Green
-	printf "\033[0;32mTask Completed\033[0m\n"
+	# printf "\033[0;32mTask Completed\033[0m\n"
+	printf "\033[0;32m"
+	echo "Task Completed"
+	date
+	printf "\033[0m\n"
 }
 function ReportError() {
 	printf "\033[0;31m\n"
@@ -173,7 +177,7 @@ function backupAlias() {
 		cat $etFile
 	fi
 
-	showCommand "Finding org for $ALIAS"
+	showCommand "Backing up org: $ALIAS"
 	cat $etFile | jq --arg JQALIAS "$ALIAS" '.result[] | select(.alias==$JQALIAS) | .value' | while read -r UN; do
 		local TEMP="${UN%\"}"
 		UN="${TEMP#\"}"
@@ -360,7 +364,7 @@ function mainRunApexTests() {
 	if [[ "$RUN_APEX_TESTS" = true ]]; then
 		showStatus "Runing Apex tests... ($0 ${FUNCNAME[0]})"
 		APEX_TEST_LOG_FILENAME="apexTest_ScratchOrg.json"
-		jq_sfdxRunApexTests force:apex:test:run --codecoverage --synchronous --verbose --json --resultformat json
+		jq_sfdxRunApexTests force:apex:test:run --codecoverage --verbose --json --resultformat=json --wait=60
 		showComplete
 	fi
 }
@@ -398,10 +402,12 @@ function mainGeneratePassword() {
 function mainDeployToSandbox() {
 	# --- Deploy to sandbox
 	if [[ ! -z "$DEPLOY_TO_SANDBOX" ]]; then
+		showStatus "*** Opening page in sandbox... ($0 ${FUNCNAME[0]})"
+		et_sfdx force:org:open --targetusername="$DEPLOY_TO_SANDBOX" --path=$DEPLOY_PAGE
 		showStatus "*** Deploying to sandbox... ($0 ${FUNCNAME[0]})"
 		et_sfdxDeploy force:source:deploy --sourcepath="$DEPLOY_TO_SANDBOX_FOLDER" --json --loglevel=trace --targetusername="$DEPLOY_TO_SANDBOX"
 		APEX_TEST_LOG_FILENAME="apexTest_CICD.json"
-		jq_sfdxRunApexTests force:apex:test:run --codecoverage --synchronous --verbose --json --resultformat json --targetusername="$DEPLOY_TO_SANDBOX"
+		jq_sfdxRunApexTests force:apex:test:run --codecoverage --verbose --json --resultformat=json --wait=60 --targetusername="$DEPLOY_TO_SANDBOX"
 	fi
 }
 function QuitSuccess() {

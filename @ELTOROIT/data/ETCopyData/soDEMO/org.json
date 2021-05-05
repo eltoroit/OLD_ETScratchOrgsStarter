@@ -5498,6 +5498,9 @@
 				"Was Not requested"
 			],
 			"MatchingInformation": [
+				"Must be createable",
+				"Must be deletable",
+				"Must be updateable",
 				"Was Not requested"
 			],
 			"MatchingRule": [

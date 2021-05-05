@@ -16,6 +16,7 @@
 	PACKAGES=
 
 	# Permission Set names
+	# Sample: PACKAGES=("PS_01" "PS_02" "PS_03")
 	PERM_SETS=("psTest")
 
 	# Prepare scratch org for deployment. Some metadata needs to be deployed first.
@@ -46,7 +47,13 @@
 	# Sample: DEPLOY_TO_SANDBOX_FOLDER="./force-apps/deploy"
 	DEPLOY_TO_SANDBOX_FOLDER=
 
+	# If using ETCopyData, where is the data?
+	ETCOPYDATA_FOLDER="./@ELTOROIT/data"
+
 # --- Batch boolean variables
+
+	# Do you want to use ETCopyData to import data?
+	IMPORT_DATA=true
 
 	# Quit on errors?
 	QUIT_ON_ERRORS=true
@@ -71,10 +78,6 @@
 
 	# Deploy Admin standard profile (helps set the visible apprlications, for example)
 	ADMIN_PROFILE=force-apps/doNotDeploy/main/default/profiles/Admin.profile-meta.xml
-
-	# Do you want to use ETCopyData to import data?
-	IMPORT_DATA=true
-	ETCOPYDATA_FOLDER="./@ELTOROIT/data"
 
 	# Do you want to run APEX tests in this new org before starting?
 	RUN_APEX_TESTS=true
