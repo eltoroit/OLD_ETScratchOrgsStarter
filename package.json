@@ -19,12 +19,12 @@
 	},
 	"homepage": "https://github.com/eltoroit/ETScratchOrgsStarter#readme",
 	"devDependencies": {
-		"@prettier/plugin-xml": "0.13.0",
-		"@salesforce/eslint-config-lwc": "0.9.0",
+		"@prettier/plugin-xml": "0.13.1",
+		"@salesforce/eslint-config-lwc": "1.0.0",
 		"@salesforce/sfdx-lwc-jest": "0.11.0",
-		"eslint": "7.20.0",
+		"eslint": "7.25.0",
 		"prettier": "2.2.1",
-		"prettier-plugin-apex": "1.8.0"
+		"prettier-plugin-apex": "1.9.1"
 	},
 	"jest": {
 		"testPathIgnorePatterns": [
