@@ -22,7 +22,9 @@ jobs:
                   sfdx force:lightning:lwc:test:setup
                   echo 'y' | sfdx plugins:install etcopydata@beta
             - name: Register DevHub
-              run: sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
+              run: |
+                  sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
+                  sfdx force:org:list
             # Create scratch org
             - name: Run Jest
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunJest
