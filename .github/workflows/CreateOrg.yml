@@ -15,16 +15,18 @@ jobs:
               if: ${{ env.ET_CICD  }}
             - name: Export token
               run: echo ${{ secrets.DEVHUB_TOKEN}} > etLogs/token.txt
-            - name: Install tools
-              run: |
-                  sudo npm install sfdx-cli --global
-                  sfdx --version
-                  sfdx force:lightning:lwc:test:setup
-                  echo 'y' | sfdx plugins:install etcopydata@beta
+            - name: Install SFDx via npm
+              run: sudo npm install sfdx-cli --global
+            - name: Check SFDX version installed
+              run: sfdx --version
+            - name: Install Jest unit testing tools for LWC
+              run: sfdx force:lightning:lwc:test:setup
+            - name: Install ETCopyData
+              run: echo 'y' | sfdx plugins:install etcopydata@beta
             - name: Register DevHub
-              run: |
-                  sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
-                  sfdx force:org:list
+              run: sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
+            - name: Show registered orgs
+              run: sfdx force:org:list
             # Create scratch org
             - name: Run Jest
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunJest
