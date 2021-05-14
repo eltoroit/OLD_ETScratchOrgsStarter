@@ -15,8 +15,8 @@ jobs:
               if: ${{ env.ET_CICD  }}
             - name: Ensure a clean npm install
               run: |
-              npm cache clean --force
-              npm install
+                  npm cache clean --force
+                  npm install
             - name: Export token
               run: echo ${{ secrets.DEVHUB_TOKEN}} > etLogs/token.txt
             - name: Install SFDx via npm
