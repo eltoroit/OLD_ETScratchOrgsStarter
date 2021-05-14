@@ -21,9 +21,9 @@
 	"devDependencies": {
 		"@prettier/plugin-xml": "0.13.1",
 		"@salesforce/eslint-config-lwc": "1.0.0",
-		"@salesforce/sfdx-lwc-jest": "0.11.0",
-		"eslint": "7.25.0",
-		"prettier": "2.2.1",
+		"@salesforce/sfdx-lwc-jest": "0.12.3",
+		"eslint": "7.26.0",
+		"prettier": "2.3.0",
 		"prettier-plugin-apex": "1.9.1"
 	},
 	"jest": {
