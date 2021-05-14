@@ -30,12 +30,14 @@ jobs:
             # Create scratch org
             - name: Run Jest
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunJest
+            - name: If failed, cat results
+              if: failure()
+              run: cat etLogs/jestTests.json
             - uses: actions/upload-artifact@v2
               if: failure()
               with:
                   name: ERROR_JEST_TESTS
                   path: etLogs/jestTests.json
-              run: cat etLogs/jestTests.json
             - name: Create Scratch Org
               run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainCreateScratchOrg
             - name: Execute Apex Before Deployment
