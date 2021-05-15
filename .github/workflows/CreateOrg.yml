@@ -19,7 +19,7 @@ jobs:
                   npm install
             - name: Export token
               run: echo ${{ secrets.DEVHUB_TOKEN}} > etLogs/token.txt
-            - name: Install SFDx via npm
+            - name: Install SFDX via npm
               run: sudo npm install sfdx-cli --global
             - name: Check SFDX version installed
               run: sfdx --version
