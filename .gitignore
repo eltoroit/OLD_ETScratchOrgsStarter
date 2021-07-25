@@ -35,6 +35,9 @@ ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
 
+# Local environment variables
+.env
+
 # System files
 # package-lock.json
 

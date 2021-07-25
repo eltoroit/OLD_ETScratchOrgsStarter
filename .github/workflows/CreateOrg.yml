@@ -1,0 +1,72 @@
+name: "ELTOROIT Test Scratch Org"
+on: [push]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        env:
+            ET_CICD: true
+        steps:
+            # Setup the Vitual Machine
+            - uses: actions/checkout@v2
+            - name: Create etLogs folder
+              run: mkdir -p etLogs
+            - name: PWD
+              run: pwd
+              if: ${{ env.ET_CICD  }}
+            - name: Export token
+              run: echo ${{ secrets.DEVHUB_TOKEN}} > etLogs/token.txt
+            - name: Install tools
+              run: |
+                  wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+                  mkdir sfdx-cli
+                  tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+                  ./sfdx-cli/install
+                  sfdx force:lightning:lwc:test:setup
+                  echo 'y' | sfdx plugins:install etcopydata@beta
+            - name: Register DevHub
+              run: sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
+            # Create scratch org
+            - name: Run Jest
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunJest
+            - uses: actions/upload-artifact@v2
+              if: failure()
+              with:
+                  name: ERROR_JEST_TESTS
+                  path: etLogs/jestTests.json
+            - name: Create Scratch Org
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainCreateScratchOrg
+            - name: Execute Apex Before Deployment
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexBeforePush
+            - name: Install Packages
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainInstallPackages
+            - name: Deploy Metadata
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainDeploy
+            - uses: actions/upload-artifact@v2
+              if: failure()
+              with:
+                  name: ERROR_DEPLOY
+                  path: etLogs/deploy.json
+            - name: Execute Apex After Deployment
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterPush
+            - name: Assign Permission Set
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainAssignPermissionSet
+            - name: Load Data
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainLoadData
+            - name: Execute Apex After Data
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainExecuteApexAfterData
+            - name: Generate Password
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainGeneratePassword
+            - name: Run Apex Tests
+              run: ./@ELTOROIT/scripts/shell/CreateOrg.sh mainRunApexTests
+            - uses: actions/upload-artifact@v2
+              if: failure()
+              with:
+                  name: ERROR_APEXT_TESTS
+                  path: etLogs/apexTests.json
+            # Upload logs as artifacts
+            - uses: actions/upload-artifact@v2
+              with:
+                  name: logs
+                  path: |
+                      etLogs
+                      !etLogs/token.txt
