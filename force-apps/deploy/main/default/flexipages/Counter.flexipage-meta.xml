@@ -3,6 +3,7 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <identifier>demoCounter</identifier>
                 <componentName>demoCounter</componentName>
             </componentInstance>
         </itemInstances>
