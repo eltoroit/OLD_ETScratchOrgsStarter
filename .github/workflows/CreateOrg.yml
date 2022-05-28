@@ -5,7 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                node: [14, 16]
+                node: [16]
         env:
             ET_CICD: true
         steps:
