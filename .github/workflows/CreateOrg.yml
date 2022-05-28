@@ -28,7 +28,14 @@ jobs:
                   ./sfdx-cli/install
                   sfdx force:lightning:lwc:test:setup
             - name: Install ETCopyData tools
-              run: echo 'y' | sfdx plugins:install etcopydata@beta
+              # run: echo 'y' | sfdx plugins:install etcopydata@beta
+              run: |
+                  Install the SDFX CLI.
+                  git clone https://github.com/eltoroit/ETCopyData.git
+                  cd ETCopyData
+                  npm install --production
+                  sfdx plugins:link .
+                  cd ..
             - name: Register DevHub
               run: sfdx force:auth:sfdxurl:store -f etLogs/token.txt --setalias DevHub --setdefaultdevhubusername
             # Create scratch org
