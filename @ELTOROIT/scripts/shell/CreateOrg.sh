@@ -4,6 +4,9 @@
 	DIR="${BASH_SOURCE%/*}"
 	if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 
+# --- check for node_modules folder
+	[ ! -d "node_modules" ] && echo "Please run npm install" && exit 0
+
 # --- Batch variables
 	# Alias for scratch org
 	ALIAS=soDEMO
