@@ -5,13 +5,13 @@
 	if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 
 # --- check for node_modules folder
-	echo "Validating install"
 	if [ ! -d "node_modules" ]; then
 		echo "Please run npm install"
 		exit 0
 	fi
 
 # --- check for ETCopyData
+	echo "Validating ETCopyData..."
 	echo "n" | sfdx ETCopyData > /dev/null 2>&1
 	if [ ! $? -eq 0 ]; then
 		echo "Please ensure ETCopyData is installed. Check this repo: https://github.com/eltoroit/ETCopyData"
