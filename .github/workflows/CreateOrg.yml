@@ -3,11 +3,18 @@ on: [push]
 jobs:
     build:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node: [14, 16]
         env:
             ET_CICD: true
         steps:
             # Setup the Vitual Machine
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
+            - name: Setup node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node }}
             - name: Create etLogs folder
               run: mkdir -p etLogs
             - name: PWD
