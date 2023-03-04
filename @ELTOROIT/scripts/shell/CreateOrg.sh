@@ -12,7 +12,7 @@
 
 # --- check for ETCopyData
 	echo "Validating ETCopyData..."
-	echo "n" | sfdx ETCopyData > /dev/null 2>&1
+	echo "n" | sfdx plugins | grep 'etcopydata' > /dev/null 2>&1
 	if [ ! $? -eq 0 ]; then
 		echo "Please ensure ETCopyData is installed. Check this repo: https://github.com/eltoroit/ETCopyData"
 		exit 0
