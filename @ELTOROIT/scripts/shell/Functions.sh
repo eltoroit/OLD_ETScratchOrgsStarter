@@ -127,7 +127,7 @@ function et_sfdxDeploy(){
 }
 function jq_sfdxGeneratePassword() {
 	et_sfdx force:user:password:generate --json
-	et_sfdx force:user:display --json
+	et_sfdx org:display:user --json
 	
 	# https://github.com/forcedotcom/cli/issues/417
 	# Display has a bug where the password is encripted on display and can't be shown. 
@@ -136,7 +136,7 @@ function jq_sfdxGeneratePassword() {
 	# etFile=etLogs/userInfo.json
 	# etFileTemp=$etFile.tmp
 	# sfdx force:user:password:generate --json > $etFileTemp
-	# sfdx force:user:display --json > $etFile
+	# sfdx org:display:user --json > $etFile
 	# pwd=$(jq -r '.result.password' $etFileTemp)
 	# jq --arg pwd "$pwd" '.result.password = $pwd' $etFile > $etFileTemp && mv $etFileTemp $etFile
 	# cat $etFile | jq .
@@ -182,7 +182,7 @@ function backupAlias() {
 		local TEMP="${UN%\"}"
 		UN="${TEMP#\"}"
 		# showCommand "[$ALIAS.bak] <= [$UN]"
-		et_sfdx force:alias:set $ALIAS.bak=$UN
+		et_sfdx alias:set $ALIAS.bak=$UN
 	done
 }
 
@@ -221,14 +221,15 @@ function mainCreateScratchOrg() {
 	# --- Create scratch org
 	showStatus "*** Creating scratch Org... ($0 ${FUNCNAME[0]})"
 	et_sfdx force:org:create -f config/project-scratch-def.json --setdefaultusername --setalias "$ALIAS" -d "$DAYS"
-	sfdx force:config:set defaultusername="$ALIAS"
+	showComplete
+	et_sfdx config:set target-org="$ALIAS"
 	showComplete
 }
 function mainPauseToCheck() {
 	# --- Pause to valiate org created
 	if [[ "$PAUSE2CHECK_ORG" = true ]]; then
 		showStatus "*** Opening scratch Org... ($0 ${FUNCNAME[0]})"
-		et_sfdx force:org:open
+		et_sfdx org:open
 		showPause "Stop to validate the ORG was created succesfully."
 	fi
 }
@@ -236,7 +237,7 @@ function mainOpenDeployPage() {
 	# --- Open deploy page to watch deployments
 	if [[ "$SHOW_DEPLOY_PAGE" = true ]]; then
 		showStatus "*** Open page to monitor deployment... ($0 ${FUNCNAME[0]})"
-		et_sfdx force:org:open --path=$DEPLOY_PAGE
+		et_sfdx org:open --path=$DEPLOY_PAGE
 	fi
 }
 function mainPrepareOrg() {
@@ -253,7 +254,7 @@ function mainManualMetadataBefore() {
 	# --- Manual metadata (before deployment)
 	if [[ ! -z "$PATH2SETUP_METADATA_BEFORE" ]]; then
 		showStatus "*** Open page to configure org (BEFORE pushing)... ($0 ${FUNCNAME[0]})"
-		et_sfdx force:org:open --path "$PATH2SETUP_METADATA_BEFORE"
+		et_sfdx org:open --path "$PATH2SETUP_METADATA_BEFORE"
 		showPause "Configure additonal metadata BEFORE pushing..."
 	fi
 }
@@ -274,7 +275,7 @@ function mainInstallPackages() {
 		showStatus "*** Installing Packages (before push)... ($0 ${FUNCNAME[0]})"
 		for PACKAGE in ${PACKAGES[@]}; do
 			# if [[ "$SHOW_DEPLOY_PAGE" = true ]]; then
-			# 	et_sfdx force:org:open --path=$DEPLOY_PAGE
+			# 	et_sfdx org:open --path=$DEPLOY_PAGE
 			# fi
 			et_sfdx force:package:install --apexcompile=all --package "$PACKAGE" --wait=30 --noprompt
 		done
@@ -300,7 +301,7 @@ function mainManualMetadataAfter() {
 	# --- Manual metadata (after deployment)
 	if [[ ! -z "$PATH2SETUP_METADATA_AFTER" ]]; then
 		showStatus "*** Open page to configure org (AFTER pushing)... ($0 ${FUNCNAME[0]})"
-		et_sfdx force:org:open --path "$PATH2SETUP_METADATA_AFTER"
+		et_sfdx org:open --path "$PATH2SETUP_METADATA_AFTER"
 		showPause "Configure additonal metadata AFTER pushing..."
 	fi
 }
@@ -321,7 +322,7 @@ function mainAssignPermissionSet() {
 	then
 		showStatus "*** Assigning permission set(s) to your user... ($0 ${FUNCNAME[0]})"
 		for PERM_SET in ${PERM_SETS[@]}; do
-			et_sfdx force:user:permset:assign --permsetname "$PERM_SET" --json
+			et_sfdx force:user:permset:assign --perm-set-name "$PERM_SET" --json
 		done
 		showComplete
 	fi
@@ -364,7 +365,7 @@ function mainRunApexTests() {
 	if [[ "$RUN_APEX_TESTS" = true ]]; then
 		showStatus "Runing Apex tests... ($0 ${FUNCNAME[0]})"
 		APEX_TEST_LOG_FILENAME="apexTest_ScratchOrg.json"
-		jq_sfdxRunApexTests force:apex:test:run --codecoverage --verbose --json --resultformat=json --wait=60
+		jq_sfdxRunApexTests apex:test:run --code-coverage --json --result-format=json --wait=60
 		showComplete
 	fi
 }
@@ -372,7 +373,7 @@ function mainPushAgain() {
 	# --- Push metadata
 	showStatus "*** Pushing metadata to scratch Org one more time... ($0 ${FUNCNAME[0]})"
 	# if [[ "$SHOW_DEPLOY_PAGE" = true ]]; then
-	# 	et_sfdx force:org:open --path=$DEPLOY_PAGE
+	# 	et_sfdx org:open --path=$DEPLOY_PAGE
 	# fi
 	et_sfdxPush force:source:push -u "$ALIAS" -f --json
 	showComplete
@@ -380,7 +381,7 @@ function mainPushAgain() {
 function mainReassignAlias() {
 	# --- Push metadata
 	showStatus "*** Re-assign alias... ($0 ${FUNCNAME[0]})"
-	et_sfdx force:config:set defaultusername=$ALIAS
+	et_sfdx config:set target-org=$ALIAS
 	showComplete
 }
 function mainPublishCommunity() {
@@ -403,11 +404,11 @@ function mainDeployToSandbox() {
 	# --- Deploy to sandbox
 	if [[ ! -z "$DEPLOY_TO_SANDBOX" ]]; then
 		showStatus "*** Opening page in sandbox... ($0 ${FUNCNAME[0]})"
-		et_sfdx force:org:open --targetusername="$DEPLOY_TO_SANDBOX" --path=$DEPLOY_PAGE
+		et_sfdx org:open --targetusername="$DEPLOY_TO_SANDBOX" --path=$DEPLOY_PAGE
 		showStatus "*** Deploying to sandbox... ($0 ${FUNCNAME[0]})"
 		et_sfdxDeploy force:source:deploy --sourcepath="$DEPLOY_TO_SANDBOX_FOLDER" --json --loglevel=trace --targetusername="$DEPLOY_TO_SANDBOX"
 		APEX_TEST_LOG_FILENAME="apexTest_CICD.json"
-		jq_sfdxRunApexTests force:apex:test:run --codecoverage --verbose --json --resultformat=json --wait=60 --targetusername="$DEPLOY_TO_SANDBOX"
+		jq_sfdxRunApexTests apex:test:run --code-coverage --json --result-format=json --wait=60 --targetusername="$DEPLOY_TO_SANDBOX"
 	fi
 }
 function QuitSuccess() {
